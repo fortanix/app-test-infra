@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WebSphere Liberty 18.0.0.3</title>
+<style>
+@font-face {
+    font-family: 'IBMPlexSans-Medium';
+    src: url('IBMPlexSans-Medium-Latin1.woff');
+	}
+@font-face {
+    font-family: 'IBMPlexSans-ExtraLight';
+    src: url('IBMPlexSans-ExtraLight-Latin1.woff');
+	}
+body{
+	color: white;
+	display: block;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 100;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 1;
+}
+a{
+	color: inherit;
+}
+a:hover{
+	cursor: pointer;
+	opacity: 0.85;
+}
+a:active{
+	opacity: 0.7;
+}
+article{
+	margin-left: 75px;
+	max-width: 1200px;
+}
+h1{
+	color: white;
+	font-size: 3.814rem;
+	font-weight: lighter;
+	margin: 0px;
+	text-align: left;
+}
+h2{
+	color: white;
+	font-size: 1.56rem;
+	font-weight: lighter;
+	line-height: 2.2rem;
+	margin: 0px;
+	text-align: left;
+}
+h3{
+	font-size: 1rem;
+	font-weight: lighter;
+	line-height: 1.7rem;
+	margin: 0px;
+	text-align: left;
+}
+p{
+	margin-bottom: 40px;
+}
+hr{
+	background-color: white;
+	border: 0px;
+	height: 1px;
+	margin: 20px 0px 28px 0px;
+	width: 70px;
+}
+section, footer{
+	position: relative;
+	width: 100%;
+	z-index: 5;
+}
+ul{
+	display: block;
+	list-style-type: none;
+	margin: 18px 0px 0px 0px;
+	padding: 0px;
+	position: relative;
+	text-indent: 0px;
+}
+ul li{
+	line-height: 1.8rem;
+}
+
+.bolded{
+	font-weight: bold;
+}
+.secondary{
+	color: #DEDEDE;
+}
+
+#welcome-section{
+	background-color: #5b2f9c;
+	background-image: url("20thStars.png");
+	background-size: contain;
+	padding-top: 50px;
+	margin-top: 0px !important;
+}
+
+#welcome-section-content{
+	padding-bottom: 20px;
+}
+
+#welcome-section .secondary{
+	color: rgba(255, 255, 255, 0.76);
+	font-size: 19px;
+}
+#welcome-section h3{
+	display: inline-block;
+}
+#anniversary-announcement {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap-reverse;
+	-ms-flex-wrap: wrap-reverse;
+	flex-wrap: wrap-reverse;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: space-between;
+	justify-content: space-between;
+	-webkit-align-content: space-between;
+	-ms-flex-line-pack: justify;
+	align-content: space-between;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+#anniversary-message {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order: 0;
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	-webkit-align-self: auto;
+	-ms-flex-item-align: auto;
+	align-self: auto;
+}
+#anniversary-announcement img {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order: 0;
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	width: 264px;
+	-webkit-align-self: auto;
+	-ms-flex-item-align: auto;
+	align-self: auto;
+}
+#resources{
+	background-color: #432174;
+}
+#resources article{
+	padding: 50px 0px 55px 0px;
+}
+#resources ul li{
+	width: 180px;
+}
+#resources ul li:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}
+footer{
+	background-color: #260C4C;
+	display: block;
+	margin: 0px;
+}
+footer article{
+	padding: 50px 0px 65px 0px;
+}
+footer img{
+	display: inline-block;
+	width: 90px;
+}
+footer p{
+	display: inline-block;
+	font-size: 0.7rem;
+	padding: 0px 50px;
+	max-width: 700px;
+}
+#footer-extra-background{
+	background-color: #260C4C;
+	bottom: 0px;
+	margin: 0px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	position: fixed;
+}
+@media(min-width: 1200px){
+	article{
+		margin-left: calc(50% - 524px);
+		width: 1048px;
+	}
+	#update-banner{
+		left: calc(50% - 600px);
+	}	
+}
+@media (max-width: 1000px){
+	footer p{
+		padding: 0px 20px;
+		max-width: 600px;
+	}
+}
+@media(max-width: 850px){
+	article{
+		margin: 0px auto;
+	}
+	footer p{
+		display: block;
+		margin: 30px auto;
+		padding: 0px 40px;
+		text-align: center;		
+	}
+	footer img{
+		display: block;
+		margin: 0px auto;
+	}
+	h1{
+		font-size: 2.441rem;
+		text-align: center;
+	}	
+	h2{
+		margin-top: 8px;
+	}
+	h1, h2, h3, ul{
+		text-align: center;
+	}
+	#resources h3{
+		margin-bottom: 16px;
+	}
+	ul{
+		width: calc(100% - 24px);
+	}	
+	ul li{
+		width: 100%;
+		margin: 0px;
+	}	
+	#banner-container{
+		margin: 50px 0px 0px 0px;
+		width: calc(100% - 16px);
+	}
+	.banner-text{
+		padding: 0px 8px;		
+		text-align: center;
+		width: 100%;
+	}	
+	#welcome-section {
+		padding-top: 100px;
+	}
+	#welcome-section img{
+		margin: 0px auto 30px auto;
+	}
+	#welcome-section button{
+		display: block;
+		margin: 20px auto 0px auto;
+		width: 175px;				
+	}
+	#anniversary-announcement {
+		padding: 0px 20px;
+	}
+	#anniversary-announcement > img {
+		padding: 0px 20px;
+	}
+	#resources{
+		margin-top: 0px !important;
+	}
+	#resources ul{
+		width: auto;
+	}
+	#resources ul li{
+		margin: 0px auto;
+	}
+	hr{
+		margin: 24px auto 30px auto;
+	}
+	.x-close{
+		left: calc(50% - 20px);		
+		top: 16px;
+	}		
+}
+@media(max-width: 600px){
+	article{
+		margin: 0px 24px;
+	}
+	.banner-text{
+		width: 90%;
+		left: 5%;
+	}
+	footer img{
+		opacity: 1 !important;
+	}
+	footer p{
+		opacity: 1 !important;
+	}
+	#welcome-section{
+		padding-top: 110px;
+		margin-top: 0px !important;
+	}		
+}
+@media(max-width: 450px){
+	#welcome-section{
+		margin-top: 222px;
+	}
+	#welcome-section img{
+		display: block;
+	}
+}
+</style>
+</head>
+<body role="main">
+	<section id="welcome-section" aria-label="Welcome Section">
+		<article id="anniversary-announcement" aria-label="Anniversary Announcement">
+			<span id="anniversary-message">
+				<h1 style="font-size:40px; font-family: IBMPlexSans-ExtraLight">Happy 20th Anniversary,</h1>
+				<h1 style="font-size:40px; font-family: IBMPlexSans-Medium">WebSphere!</h1>
+				<h2 class="secondary" style="font-family: IBMPlexSans-ExtraLight">Powered by WebSphere Liberty 18.0.0.3</h2>
+			</span>
+			<img src="20thRibbon.png" alt="20th Anniversary: 1998-2018"/>
+		</article>
+		<article id="welcome-section-content" aria-label="Welcome Section Content">
+			<!-- Inject section from wasdev -->
+		</article>
+		
+	</section>
+	<section id="resources" aria-label="External Resources">
+		<article aria-label="Additional Resources">
+			<h2>Additional Resources</h2>
+			<ul>
+				<li><a href="http://wasdev.net/?wlp=welcome">WASdev Community</a></li>
+				<li><a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html">Liberty Documentation</a></li>
+				<li><a href="http://wasdev.net/answers/?wlp=welcome">WASdev Forum</a></li>
+			</ul>
+		</article>
+	</section>
+	<footer>
+		<article aria-label="Copyright">
+			<img src="ibm-white-logo-small.png" alt="IBM Logo">
+			<p id="footer-copy">
+				Licensed Materials &#8212 Property of IBM &copy Copyright IBM Corp.
+				1997, 2015. All Rights Reserved. IBM, and the IBM logo are
+				trademarks or registered trademarks of International Business
+				Machines Corp., registered in many jurisdictions worldwide. Other
+				product and service names might be trademarks of IBM or other
+				companies. A current list of IBM trademarks is available on the Web
+				at <span class="underline">Copyright and trademark
+					information.</span>
+			</p>
+		</article>
+	</footer>
+	<div id="footer-extra-background"></div>
+</body>
+<!-- The call below attempts to get a latest release marker file from a specific location. -->
+<!-- It's expected that the returned object will be a piece of JavaScript defining a       -->
+<!-- variable called latestReleasedVersion that contains the following fields:             -->
+<!-- version: The version number of the latest released product                            -->
+<!-- availableAt: The URL where you can get the latest version (from a Web Browser)        -->
+<!-- availableAtLabel: The label to show on the anchor tag                                 -->
+<script type="text/javascript" src="https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp_ga_latestversion.js"></script>
+<script type="text/javascript" src="version.js"></script>
+<script type="text/javascript">
+	var urlForCssEnhancements = "https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/adminCenter-welcome.css";
+	var isLibertyUpdateAvailable = false;
+	function doVersionCheck(latestVersion) {
+		// Check that the remote file was located
+		// and contains the required version details
+		if (latestVersion != null && latestVersion.productName != null
+				&& latestVersion.availableFrom != null
+				&& latestVersion.version != null) {
+
+			// Check if the online version differs from this current version
+			if (latestVersion.version != current.version) {
+				isLibertyUpdateAvailable = true;
+			}
+		}
+	}
+	doVersionCheck(latestReleasedVersion);
+</script>
+<script type="text/javascript" src="https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/adminCenter-welcome.js"></script>
+</html>

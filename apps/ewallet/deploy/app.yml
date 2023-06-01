@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: watson-app
+  labels:
+    app: watson-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watson-app
+  template:
+    metadata:
+      labels:
+        app: watson-app
+    spec:
+      containers:
+      - name: mysql
+        image: ashishth09/mysqldb:3.0 
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dbpass
+              key: password
+      - name: app
+        image: ashishth09/watson-stocks:9.0
+        ports:
+        - containerPort: 9090
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dbpass
+              key: password
+      - name: nginx
+        image: ashishth09/watson-nginx:3.0
+        ports:
+        - containerPort: 80

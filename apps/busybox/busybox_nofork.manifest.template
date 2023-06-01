@@ -1,0 +1,22 @@
+#!$(PAL)
+
+loader.exec = file:busybox_nofork
+loader.execname = busybox_nofork
+loader.env.PATH = /:/usr/sbin:/usr/bin:/sbin:/bin
+loader.env.LD_LIBRARY_PATH = /lib:/lib/x86_64-linux-gnu
+loader.env.USERNAME =
+loader.env.HOME =
+loader.env.PWD =
+loader.env.HOSTNAME = test
+loader.debug_type = none
+
+fs.mount.lib1.type = chroot
+fs.mount.lib1.path = /lib
+fs.mount.lib1.uri = file:$(LIBCDIR)
+
+fs.mount.lib2.type = chroot
+fs.mount.lib2.path = /lib64
+fs.mount.lib2.uri = file:/lib
+
+fs.root.type = chroot
+fs.root.uri = file:$(RUNDIR)

@@ -1,28 +1,18 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository contains the application test infrastructure code that currently runs in zircon and Salmiac.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
+This repository is created to share the application test infrastruture code between zircon and salmiac. In future we can also use it to share between similar projects.
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
+Typically in order to share and use this, the project must have this module as its submodule. Then there should be some kind of makefile rules
+and/or python and/or shell scripts that uses the test infrastructure code here. 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
-
+Any changes made here should verified by running tests in zircon(enclaveos) and nitro. Typically the way to do it would be to checkout the 
+development branch of this project and then run the tests in zircon and salmiac. 
 ### Who do I talk to? ###
 
 * Repo owner or admin

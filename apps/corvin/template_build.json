@@ -1,0 +1,14 @@
+{
+    "docker_info": {
+        "docker_image_name": "corvin-app",
+        "docker_version": "a11-b-c",
+        "docker_image_sha": "07febcac4443"
+    },
+    "mrenclave": "efa6a676f372257af59b11c6400aefbed607fd2b232b378de2043e035ec13201",
+    "mrsigner": "ac2ef828f67e7a77f61262161504b7ded7aa03437dfbd9ac5ec81f265f2befaa",
+    "isvprodid": 0,
+    "isvsvn": 0,
+    "app_name": "corvin_e2eflow_xxx",
+    "mem_size": 4096,
+    "threads": 32
+}

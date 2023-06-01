@@ -1,0 +1,25 @@
+These directories contain sources, scripts, and Dockerfiles for building
+the base IBM ewallet demo application containers, and containers for
+running these applications in zircon.
+
+The base containers are under the base subdirectory. Some of the containers
+have been lightly modified to create base images that are capable of
+being turned into zircon applications. nginx requires the most changes,
+as nginx currently requires source patches and a special build to
+work with zircon. (Zircon bugs ZIRC-284, ZIRC-285).
+
+The zircon subdirectory contains the scripts and Dockerfiles for
+building the zircon packages.
+
+There are three containers for the ewallet application:
+- mysql, the database
+- ewallet, a web application using the Flask framework (written in Python)
+- nginx, the web server
+
+base/nginx-base builds a special nginx base image that can run in zircon.
+It patches the nginx source to work around ZIRC-284. This is in turn
+used by the base/nginx container, which adds the ewallet-specific
+configuration for nginx.
+
+The deploy directory contains configuration files for running the base
+containers with Kubernetes.

@@ -1,0 +1,18 @@
+nodeport — apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-service
+  labels:
+    name: nodify
+    context: ctx
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 80
+      name : http
+    - port: 9090
+      targetPort: 443
+      name : https
+  selector:
+    app: watson-app

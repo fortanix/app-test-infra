@@ -1,0 +1,39 @@
+{
+  "advanced_settings": {
+    "caCertificate": {
+      "caPath": "",
+      "system": "undefined"
+    },
+    "certificate": {
+      "altNames": [],
+      "certPath": "/ftx-efs/cert.pem",
+      "chainPath": "",
+      "issuer": "MANAGER_CA",
+      "keyParam": {
+        "size": 2048
+      },
+      "keyPath": "/ftx-efs/key.pem",
+      "keyType": "RSA",
+      "subject": "Fortanix-nginx-curated-app"
+    },
+    "entrypoint": [],
+    "manifestEnv": [],
+    "rw_dirs": []
+  },
+  "allowed_domains": [
+    "Fortanix-nginx-curated-app"
+  ],
+  "description": "",
+  "inputImageName": "",
+  "isvprodid": 0,
+  "isvsvn": 0,
+  "name": "__APPNAME__",
+  "outputImageName": "",
+  "threads": 10,
+  "javaMode": "OPENJDK",
+  "rwDirs": [
+    "/"
+  ],
+  "debug": true,
+  "memSize": "1G"
+}

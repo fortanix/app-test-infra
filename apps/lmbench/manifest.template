@@ -1,0 +1,34 @@
+loader.env.LD_LIBRARY_PATH = /lib:/lib64
+loader.debug_type = none
+
+fs.mount.tmp1.type = chroot
+fs.mount.tmp1.path = /tmp
+fs.mount.tmp1.uri = file:/tmp
+fs.mount.tmp1.opts.permission = rw
+
+fs.mount.tmp2.type = chroot
+fs.mount.tmp2.path = /var/tmp
+fs.mount.tmp2.uri = file:/var/tmp
+fs.mount.tmp2.opts.permission = rw
+
+fs.mount.lib.type = chroot
+fs.mount.lib.path = /lib
+fs.mount.lib.uri = file:$(LIBCDIR)
+fs.mount.lib.opts.permission = rw
+
+fs.mount.bin.type = chroot
+fs.mount.bin.path = /bin/sh
+fs.mount.bin.uri = file:/bin/sh
+fs.mount.bin.opts.permission = rw
+
+fs.mount.inc.type = chroot
+fs.mount.inc.path = /usr/include/x86_64-linux-gnu/sys/types.h
+fs.mount.inc.uri = file:/usr/include/x86_64-linux-gnu/sys/types.h
+fs.mount.inc.opts.permission = rw
+
+net.allow_bind.1 = 0.0.0.0:31233-31237
+net.allow_bind.2 = 0.0.0.0:34297-34298
+net.allow_peer.1 = 127.0.0.1:0-65535
+
+sys.brk.size = 32M
+sys.stack.size = 4M

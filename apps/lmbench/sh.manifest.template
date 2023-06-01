@@ -1,0 +1,25 @@
+loader.exec = file:/bin/sh
+loader.env.LD_LIBRARY_PATH = /lib:/lib64
+loader.debug_type = inline
+
+fs.mount.tmp1.type = chroot
+fs.mount.tmp1.path = /tmp
+fs.mount.tmp1.uri = file:/tmp
+fs.mount.tmp1.opts.permission = rw
+
+fs.mount.tmp2.type = chroot
+fs.mount.tmp2.path = /var/tmp
+fs.mount.tmp2.uri = file:/var/tmp
+fs.mount.tmp2.opts.permission = rw
+
+fs.mount.lib.type = chroot
+fs.mount.lib.path = /lib
+fs.mount.lib.uri = file:$(LIBCDIR)
+fs.mount.lib.opts.permission = rw
+
+sys.brk.size = 32M
+sys.stack.size = 4M
+
+fs.root.type = chroot
+fs.root.uri = file:$(RUNDIR)
+fs.root.opts.permission = rw

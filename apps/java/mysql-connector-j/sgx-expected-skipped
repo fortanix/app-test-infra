@@ -1,0 +1,6 @@
+testTypeEnumWrongMysqlxValue
+testBasicAddMap
+testSecureSessionVerifyServerCertificateIdentity
+testEmptyDatabasePLAIN
+testBasicSaslPlainAuthFailure
+testBasicSaslPlainAuth

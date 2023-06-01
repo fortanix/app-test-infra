@@ -1,0 +1,6 @@
+fastcgi_unix.t
+proxy_unix.t
+stream_proxy_next_upstream.t
+stream_resolver.t
+stream_ssl_preread.t
+stream_upstream.t

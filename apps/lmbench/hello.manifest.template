@@ -1,0 +1,14 @@
+loader.exec = file:hello
+loader.env.LD_LIBRARY_PATH = /lib:/lib64
+loader.debug_type = none
+
+fs.mount.lib.type = chroot
+fs.mount.lib.path = /lib
+fs.mount.lib.uri = file:$(LIBCDIR)
+fs.mount.lib.opts.permission = rw
+
+sys.brk.size = 32M
+sys.stack.size = 4M
+
+fs.root.type = chroot
+fs.root.uri = file:$(RUNDIR)

@@ -1,0 +1,43 @@
+#!$(PAL)
+
+loader.exec = file:build/sbin/lighttpd
+loader.env.LD_LIBRARY_PATH = /lib:/lighttpd
+loader.debug_type = none
+
+fs.mount.lib.type = chroot
+fs.mount.lib.path = /lib
+fs.mount.lib.uri = file:$(LIBCDIR)
+fs.mount.lib.opts.permission = rw
+
+fs.mount.build.type = chroot
+fs.mount.build.path = /lighttpd
+fs.mount.build.uri = file:build/lib
+fs.mount.build.opts.permission = rw
+
+fs.mount.html.type = chroot
+fs.mount.html.path = $(PWD)/html
+fs.mount.html.uri = file:html
+fs.mount.html.opts.permission = rw
+
+fs.mount.usr.type = chroot
+fs.mount.usr.path = /usr
+fs.mount.usr.uri = file:/usr
+fs.mount.usr.opts.permission = rw
+
+fs.mount.tmp.type = chroot
+fs.mount.tmp.path = /tmp
+fs.mount.tmp.uri = file:/tmp
+fs.mount.tmp.opts.permission = rw
+
+# allow to bind on port for listening
+net.allow_bind.1 = $(HOST):$(PORT)
+
+sys.stack.size = 256K
+sys.brk.size = 4M
+glibc.heap_size = 16M
+
+sgx.thread_num = 8
+
+fs.root.type = chroot
+fs.root.uri = file:$(RUNDIR)
+fs.root.opts.permission = rw

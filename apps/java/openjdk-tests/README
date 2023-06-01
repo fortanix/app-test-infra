@@ -1,0 +1,58 @@
+opendjk-tests.py is designed to run a list of individual OpenJDK tests,
+determine whether they all passed, and report that status.
+
+The test list is in the form of a text file with a test name and a
+native timeout (in integer seconds).  The list is passed to a container,
+which runs the tests (killing those that run for longer than the timeout
+(times 100 on SGX, plus a delay time for jtreg to write status:
+
+    com/oracle/net/sanity.sh 2
+
+When the container finishes, openjdk-tests copies the lot files from the
+operation back, parses the simplest of them to ensure that they succeeded,
+and exits.
+
+The simplest log filename is created by appending ".log" to the name of
+the test file, with one entry per test:
+
+    com/oracle/net/sanity.sh Test results: passed: 1
+
+A full log of all jtreg output is created in a filename of "-full.log"
+appended to the name of the test file.
+
+Log file processing
+
+The Python script aggregate-tests.py will post-process the simple log
+file to aggregate tests with similar names.  NB:  aggregation is not
+performed on multiple levels, so it is possible that if we had multiple
+.java or .sh files in the jdk/lambda directory, we could get output like:
+
+jdk/lambda  29 0 1 0
+jdk/lambda/separate  4 0 3 1
+
+To pull a list of all failed tests, and the one-line reason for failure,
+which is interesting for top level triage:
+
+awk '/^TEST:/ {test = $2; test_result = ""} /^TEST RESULT:/ {test_result = $0} /Test results:/ {if ($3 != "passed:") {print test; print test_result; print $0; test = test_result= ""}}' sun.tests-full.log > sun.results
+
+Tests
+
+We divided the 6000 or so tests in the jdk/test directory into nine files,
+deleting awt and other graphically-oriented tests.  The ad-hoc division
+was intended to provide roughly similar execution times for each set of
+tests, while respecting obvious divisions in test names.
+
+Note that there are (as of commit time) 5435 different tests:
+
+subset.tests -- just one test to verify openjdk-tests.py is working
+java.beans.tests --  java/beans
+java.lang.tests -- java/lang
+java.rmi.tests -- java/rmi
+java.time.tests -- java/time
+java.util.tests -- java/util
+java-other.tests -- other java tests that didn't fit into previous categories
+javax-other.tests -- ditto for javax
+other.tests -- other tests that didn't fit into previous categories
+security.tests -- a superset of the Java security tests run elsewhere
+sun.tests -- tests from the sun directory
+
