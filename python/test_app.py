@@ -361,7 +361,8 @@ class AppTestContainer(object):
                  log_file_path=None, zircon_panic_expected=None,
                  expected_status=0, dirs_to_copy=None, skip_converter_version_check=False,
                  cpu_count=2, input_auth_config=None, output_auth_config=None,
-                 allow_docker_pull_failure=False, allow_docker_push_failure=True):
+                 allow_docker_pull_failure=False, allow_docker_push_failure=True,
+                 enable_overlay_fs_persistence=None):
 
         # This is needed for kube containers as well as docker, to
         # push images.
@@ -383,6 +384,7 @@ class AppTestContainer(object):
         self.nitro_memsize = nitro_memsize
         self.cpu_count = cpu_count
         self.allow_docker_push_failure = allow_docker_push_failure
+        self.enable_overlay_fs_persistence = enable_overlay_fs_persistence
 
         # These environment variables are added just to the application's manifest.
         self.manifest_env = manifest_env
@@ -1248,6 +1250,9 @@ class NitroDockerContainer(DockerContainer):
 
         if self.entrypoint:
             request.converter_options.entry_point = self.entrypoint
+
+        if self.enable_overlay_fs_persistence:
+            request.converter_options.enable_overlay_filesystem_persistence = self.enable_overlay_fs_persistence
 
         if self.certificates is not None:
             request.certificates = []

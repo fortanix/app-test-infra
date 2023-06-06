@@ -20,8 +20,9 @@ class TestPythonSalmFS(TestApp):
         container = self.container('python', registry='docker.io', image_version='slim-bullseye',
                                    network='bridge', memsize='2048M',
                                    entrypoint=['/root/read-write.py'],
-                                   container_env=['ENCLAVEOS_DEBUG=debug', 'RUST_LOG=info', 'USE_VSK=true',
-                                                  dsm_endpoint_env_var, 'FS_KEY_NAME=salmiac-overlayfs-exportable-key',
+                                   enable_overlay_fs_persistence=True,
+                                   container_env=['ENCLAVEOS_DEBUG=debug', 'RUST_LOG=info',
+                                                  dsm_endpoint_env_var,
                                                   dsm_api_key])
         container.copy_to_input_image(['flushcache.sh', 'read-write.py', 'testfile'], '/root/')
         container.prepare()

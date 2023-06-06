@@ -85,9 +85,9 @@ class TestMysql(test_app.TestApp):
             container_env=['MYSQL_ROOT_PASSWORD={}'.format(passwd),
                            'ENCLAVEOS_DEBUG=debug',
                            'RUST_LOG=info',
-                           'USE_VSK=true',
                            dsm_endpoint_env_var,
                            dsm_api_key],
+            enable_overlay_fs_persistence=True,
             **nitro_args)
         container.prepare()
         container.run()
