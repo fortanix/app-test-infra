@@ -37,7 +37,7 @@ class TestContainerUser(test_app.TestApp):
             # The zircon process runs as user nobody in the container
             # The zircon guest believes that it's running as root
             if (any([line.endswith('running as uid 65534, gid 65534') for line in logs.stderr]) and
-                'uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)' in logs.stdout):
+                'uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)' in logs.stdout[0]):
                 self.result(name, 'PASSED')
             else:
                 self.result(name, 'FAILED')
@@ -54,7 +54,7 @@ class TestContainerUser(test_app.TestApp):
         logs = container.run_and_return_logs()
         # The zircon process runs as user nobody in the container
         # The zircon guest believes that it's running as root
-        if 'uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)' in logs.stdout:
+        if 'uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)' in logs.stdout[0]:
             self.result('logperms', 'PASSED')
         else:
             self.result('logperms', 'FAILED')
