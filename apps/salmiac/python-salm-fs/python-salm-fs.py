@@ -18,7 +18,7 @@ class TestPythonSalmFS(TestApp):
         dsm_endpoint_env_var = 'FS_VSK_ENDPOINT={}'.format(SMARTKEY_ENDPOINT)
         dsm_api_key = 'FS_API_KEY={}'.format(os.getenv('FORTANIX_API_KEY', None))
         container = self.container('python', registry='docker.io', image_version='slim-bullseye',
-                                   network='bridge', memsize='2048M',
+                                   memsize='2048M',
                                    entrypoint=['/root/read-write.py'],
                                    enable_overlay_fs_persistence=True,
                                    container_env=['ENCLAVEOS_DEBUG=debug', 'RUST_LOG=info',
