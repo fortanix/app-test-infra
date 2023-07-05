@@ -1738,7 +1738,7 @@ class MalborkContainer(object):
                 name = f.read().strip()
                 # ZIRC-5248 Override the manager test container name until MAL-5751 is complete and
                 # we have access to ub20 binaries which have the fix for MAL-5599
-                name = "513076507034.dkr.ecr.us-west-1.amazonaws.com/enclaveos/manager-test:1.40.2033"
+                name = "513076507034.dkr.ecr.us-west-1.amazonaws.com/enclaveos/manager-test:1.41.2074"
                 docker_client = docker.from_env()
                 image_id = docker_client.images.get(name).id
                 if image_id is None:
