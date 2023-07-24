@@ -4,7 +4,7 @@ import test_app
 
 class TestDnsClient(test_app.TestApp):
     def run(self):
-        container = self.container('zapps/dnsclient', memsize='64M')
+        container = self.container('zapps/dnsclient', memsize='128M')
         container.prepare()
         container.run_and_compare_stdout(['127.0.0.1', '127.0.0.1', '127.0.0.1'])
         return True

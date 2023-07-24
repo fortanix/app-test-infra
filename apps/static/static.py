@@ -4,7 +4,7 @@ import test_app
 
 class TestStaticClient(test_app.TestApp):
     def run(self):
-        container = self.container('zapps/static', memsize='64M')
+        container = self.container('zapps/static', memsize='128M')
         container.prepare()
         container.run_and_compare_stdout(['Hello world'])
         return True

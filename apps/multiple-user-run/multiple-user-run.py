@@ -11,7 +11,7 @@ class TestMultUser(test_app.TestApp):
 
     def run(self):
 
-        container = self.container('zapps/python', memsize='64M', image_version='2021062211-e3e62bc',
+        container = self.container('zapps/python', memsize='128M', image_version='2021062211-e3e62bc',
                                    entrypoint=['/bin/ls'], user='zircon-tests')
 
         container.prepare()

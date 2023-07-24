@@ -29,7 +29,7 @@ class TestContainerUser(test_app.TestApp):
             container = self.container(name,
                                        registry='library',
                                        image_version='latest',
-                                       memsize='64M',
+                                       memsize='128M',
                                        zircon_debug=True,
                                        log_file_path='stderr')
             container.prepare()
@@ -47,7 +47,7 @@ class TestContainerUser(test_app.TestApp):
         # to run due to inability to access the log file.
         name = 'container-user-nobody'
         container = self.container(name,
-                                   memsize='64M',
+                                   memsize='128M',
                                    registry='library',
                                    image_version='latest')
         container.prepare()

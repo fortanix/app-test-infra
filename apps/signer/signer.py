@@ -35,7 +35,7 @@ class SignerTest(test_app.TestApp):
             signed1 = self.re_sign_image(input_image=input_image.converted_image, memory_model=memory_model)
 
             # TODO: Add support for Kubernetes environments.
-            signed1_container = test_app.ZirconDockerContainer(test_app.BASE_UBUNTU_CONTAINER, memsize='64M', registry='library',
+            signed1_container = test_app.ZirconDockerContainer(test_app.BASE_UBUNTU_CONTAINER, memsize='128M', registry='library',
                                                                converted_image=signed1, run_args=self.run_args)
             signed1_container.prepare_container()
 
@@ -82,7 +82,7 @@ class SignerTest(test_app.TestApp):
 
 
     def run(self):
-        base_container = self.container(test_app.BASE_UBUNTU_CONTAINER, memsize='64M', registry='library',
+        base_container = self.container(test_app.BASE_UBUNTU_CONTAINER, memsize='128M', registry='library',
                                         image_version=test_app.BASE_UBUNTU_VERSION,
                                         entrypoint=['/bin/bash', '-c', 'echo Signer test container ran'])
 

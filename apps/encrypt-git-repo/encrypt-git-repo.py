@@ -10,7 +10,7 @@ class TestEncryptGitRepo(test_app.TestApp):
         echo_string = 'hello from fortanix'
         container = self.container(
                 'zapps/encrypt-git-repo',
-                memsize='64M',
+                memsize='128M',
                 image_version='2022022309-41fb514', encrypted_dirs=['/sgxtop'],
                 entrypoint=['/usr/bin/echo', echo_string]
                 )
