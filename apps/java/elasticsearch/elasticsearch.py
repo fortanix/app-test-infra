@@ -13,6 +13,8 @@ class TestElasticSearch(test_app.TestApp):
     ES_NODE_COMM_PORT = 9300
     retries           = 100
     saved_index_file  = 'saved_index_file.html'
+    expected_index_file = 'reference_index_file.html'
+    delay_server_check_status = 5 * 60
 
     def run(self):
         manifest_env = [ 'discovery.type=single-node' ]
@@ -28,15 +30,31 @@ class TestElasticSearch(test_app.TestApp):
         #
         # Elasticsearch also needs /tmp to be read/write rather than EFS. It wants to mmap a file under /tmp, and
         # we don't currently support that. ZIRC-743.
-        container = self.container(image='zapps/elasticsearch', image_version='2020081711-6522b77', ports=ports,
-                                   memsize='4G', manifest_env=manifest_env,
-                                   rw_dirs=['/var', '/tmp', '/run'],
-                                   thread_num=2048)
+        extra_container_args = {}
+        image_version = None
+        if os.environ['PLATFORM'] == "nitro":
+            input_image = 'elasticsearch'
+            image_version = '8.7.0'
+            extra_container_args['registry'] ='library'
+            extra_container_args['container_env'] = {'ELASTIC_PASSWORD':'elastic',
+                                                     'discovery.type':'single-node',
+                                                     'xpack.security.enabled':'false'}
+            TestElasticSearch.expected_index_file = 'reference_index_file_nitro.html'
+            TestElasticSearch.delay_server_check_status = 60 # in seconds
+
+        else:
+            input_image = 'zapps/elasticsearch'
+            image_version = '2020081711-6522b77'
+
+        container = self.container(image=input_image, image_version=image_version, ports=ports,
+                                   memsize='4G', manifest_env=manifest_env, nitro_memsize='2G',
+                                   rw_dirs=['/var', '/tmp', '/run'], thread_num=2048,
+                                   **extra_container_args)
         container.prepare()
         container.run()
 
         # Delay to allow the server to come up
-        time.sleep(5 * 60)
+        time.sleep(TestElasticSearch.delay_server_check_status)
         url = 'http://{}:{}/'.format(container.get_my_ip(), self.ES_REQUEST_PORT)
 
         self.info('Testing if the Elasticsearch is up...')
@@ -60,7 +78,7 @@ class TestElasticSearch(test_app.TestApp):
         del file_data['name']
         del file_data['cluster_uuid']
 
-        with open('reference_index_file.html', "r") as read_ref_file:
+        with open(TestElasticSearch.expected_index_file, "r") as read_ref_file:
             ref_file_data = json.load(read_ref_file)
         del ref_file_data['name']
         del ref_file_data['cluster_uuid']

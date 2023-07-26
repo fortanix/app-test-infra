@@ -1,7 +1,7 @@
 $(SUBDIR)/app-test := websphere.py
 
 ifeq ($(PLATFORM),nitro)
-$(SUBDIR)/app-test-FREQUENCY := broken
+$(SUBDIR)/app-test-FREQUENCY := ci
 else
 $(SUBDIR)/app-test-FREQUENCY := daily
 endif
