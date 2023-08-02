@@ -2,6 +2,8 @@
 
 import json
 import os
+import random
+import string
 import subprocess
 import test_app
 import time
@@ -32,13 +34,15 @@ class TestElasticSearch(test_app.TestApp):
         # we don't currently support that. ZIRC-743.
         extra_container_args = {}
         image_version = None
+        random_password = None
         if os.environ['PLATFORM'] == "nitro":
+            random_password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(14))
             input_image = 'elasticsearch'
             image_version = '8.7.0'
             extra_container_args['registry'] ='library'
-            extra_container_args['container_env'] = {'ELASTIC_PASSWORD':'elastic',
-                                                     'discovery.type':'single-node',
-                                                     'xpack.security.enabled':'false'}
+            extra_container_args['container_env'] = {'ELASTIC_PASSWORD': random_password,
+                                                     'discovery.type': 'single-node',
+                                                     'xpack.security.enabled':'true'}
             TestElasticSearch.expected_index_file = 'reference_index_file_nitro.html'
             TestElasticSearch.delay_server_check_status = 60 # in seconds
 
@@ -55,12 +59,15 @@ class TestElasticSearch(test_app.TestApp):
 
         # Delay to allow the server to come up
         time.sleep(TestElasticSearch.delay_server_check_status)
-        url = 'http://{}:{}/'.format(container.get_my_ip(), self.ES_REQUEST_PORT)
+        if random_password:
+            url = 'http://elastic:{}@{}:{}/'.format(random_password, container.get_my_ip(), self.ES_REQUEST_PORT)
+        else:
+            url = 'http://{}:{}/'.format(container.get_my_ip(), self.ES_REQUEST_PORT)
 
         self.info('Testing if the Elasticsearch is up...')
         running = False
         for i in range(TestElasticSearch.retries):
-            ret = os.system('wget -nv -O {} {}'.format(TestElasticSearch.saved_index_file, url))
+            ret = os.system('wget -q -O {} {}'.format(TestElasticSearch.saved_index_file, url))
             if ret == 0:
                 running = True
                 print('Elasticsearch is responsive, continuing to test')
@@ -89,8 +96,9 @@ class TestElasticSearch(test_app.TestApp):
         # Run some standard queries and ensure they succeed by checking
         # output of each response
         query_result = subprocess.check_output(['/usr/bin/python3', 'queries.py',
-        '-i' , container.get_my_ip(), '-p', str(self.ES_REQUEST_PORT)])
-
+                                                '-i' , container.get_my_ip(),
+                                                '-p', str(self.ES_REQUEST_PORT),
+                                                '-k', str(random_password)])
         with open('reference_query_file.html', "rb") as r:
             ref_query_data = r.read()
             if query_result != ref_query_data:
@@ -100,4 +108,3 @@ class TestElasticSearch(test_app.TestApp):
 
 if __name__ == '__main__':
     test_app.main(TestElasticSearch)
-
