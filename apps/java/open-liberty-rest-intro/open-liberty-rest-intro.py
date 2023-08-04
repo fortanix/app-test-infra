@@ -41,10 +41,9 @@ class TestOLRestIntro(test_app.TestApp):
         container.run()
 
         # TODO: Can we get this from the container, instead of hard coding it
-        app_name = 'rest-1.0-SNAPSHOT'
+        app_name = 'guide-rest-intro'
         url = 'http://localhost:{}/{}/'.format(container.get_port_mapping(9080), app_name)
         service_url = url + 'System/properties/'
-
         running = False
         for i in range(TestOLRestIntro.retries):
             ret = os.system('wget -nv -O /dev/null {}'.format(service_url))
