@@ -12,7 +12,7 @@
 #
 
 import os
-from test_app import DEFAULT_IMAGE_VERSION, DOCKER_REGISTRY, main, \
+from test_app import main, \
                      NativeContainer, TestApp
 from test_utils import TestException, parse_time_string
 import time
