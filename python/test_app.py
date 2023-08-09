@@ -89,7 +89,6 @@ DEFAULT_STOP_TIMEOUT = 300
 SGX_TIMEOUT_SCALE = 9
 
 DOCKER_REGISTRY = os.environ['DOCKER_REGISTRY']
-DEFAULT_IMAGE_VERSION = '2023080412-5dba604'
 SMARTKEY_ENDPOINT = 'https://amer.smartkey.io/'
 IBMCLOUD_REGISTRY = 'us.icr.io/datashield-dev'
 
@@ -343,6 +342,35 @@ def compare_output(output, expected):
         raise TestException('Output mismatch')
     return True
 
+def get_ecr_region():
+    f = open(os.path.expanduser('~') + "/.aws/config", "r")
+    for line in f:
+        if ('region' in line):
+            r = line.split('=')[-1].strip()
+            return r
+    return None
+
+def get_latest_image_tag(image_name, registry):
+    if ('zapps' not in image_name):
+        return 'latest'
+
+    #
+    region = registry.split('.')[3]
+    print('region ' + region)
+    command = "aws ecr describe-images --repository-name " + image_name + \
+              " --region " + region + " --output text \
+              --query 'sort_by(imageDetails,& imagePushedAt)[*].imageTags[*]' \
+              | tr '\\t' '\\n' | grep 20.*-.* | sort -r | head -n 1" # we are fetching all the tags of the format
+              # *-* because we tag images in zircon-apps as <timstamp>-<hash>. Timestamp begins
+              # with the year
+
+    latest_tag = os.popen(command).read().rstrip()
+    print('latest tag fetched is: ' + latest_tag)
+    return latest_tag
+
+
+def get_default_image_tag(image_name, registry):
+    return get_latest_image_tag(image_name, registry)
 
 class AppTestContainer(object):
     MAX_LOG_LINES = 10000
@@ -370,12 +398,12 @@ class AppTestContainer(object):
 
         self.converted_image = converted_image
         self.image = image
-        self.image_version = image_version if image_version is not None else DEFAULT_IMAGE_VERSION
+        self.registry = registry
+        self.image_version = image_version if image_version is not None else \
+            get_default_image_tag(self.image, self.registry)
         self.input_auth_config = input_auth_config
         self.output_auth_config = output_auth_config
-
         self.manifest_options = manifest_options
-        self.registry = registry
         self.memsize = memsize
         self.stacksize = stacksize
         self.thread_num = thread_num
