@@ -69,6 +69,7 @@ class TestSpring(test_app.TestApp):
 
         with open('application.properties') as f:
             contents = f.read().replace('localhost', db_container.get_my_ip())
+            contents = contents.replace('/db_example', '/db_example?enabledTLSProtocols=TLSv1.2')
 
         #contents += 'logging.level.root=WARN\n'
 
