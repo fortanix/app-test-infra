@@ -7,7 +7,7 @@ class TestSdkmsCli(test_app.TestApp):
     def run(self):
         container = self.container(
                 'zapps/sdkms-cli',
-                memsize='512M',
+                memsize='2G',
                 thread_num=128,
                 rw_dirs=['/root'],
                 manifest_env=[
