@@ -414,6 +414,9 @@ def is_newer_locust():
     f = locust_version.find('locust 1.4.1') >= 0
     return f
 
+def is_valid_keysize(size):
+    return int(size) >= 2048 and int(size) % 2 == 0
+
 #
 # Helper functions for read-only filesystem regression tests
 #
