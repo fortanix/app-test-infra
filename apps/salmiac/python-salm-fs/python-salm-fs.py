@@ -3,7 +3,10 @@
 # Copyright (C) 2022 Fortanix, Inc. All Rights Reserved.
 #
 # Test to check file writes and reads data between flushing
-# the kernel filesystem cache
+# the kernel filesystem cache and container restarts.
+#
+# Also check username and hostname listed in the enclave
+# kernel
 
 from test_app import TestApp, main, SMARTKEY_ENDPOINT
 import os
@@ -35,7 +38,9 @@ class TestPythonSalmFS(TestApp):
                            '### Test 2 complete ###',
                            '### Test 3 part 1 complete ###',
                            'File /root/testfile3 contains expected data',
-                           '### Test 3 part 2 complete ###']
+                           '### Test 3 part 2 complete ###',
+                           'Linux version 4.14.246 (root@Linux) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2))']
+        # Last expected_output is a sub test for SALM-352 which ensures the use of updated linux kernel
         container.run_and_search_multiple_lines_logs(expected_lines=expected_output, rerun=True)
 
         return True
