@@ -59,6 +59,8 @@ def app_test_arg_list(testname, installer, args=None):
 # So ci tests include all of the smoke tests, daily tests include all of
 # the weekly tests, and so on.
 #
+
+
 frequency_table = [
     'smoke',
     'ci',
