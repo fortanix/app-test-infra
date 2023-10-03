@@ -2,7 +2,6 @@
 
 import argparse
 import json
-import os
 import test_app
 
 class TestBash(test_app.TestApp):

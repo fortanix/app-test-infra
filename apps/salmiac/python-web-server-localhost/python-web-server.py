@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-import time
-import requests
 import test_app
-import test_utils
 
 class TestPythonWebServerLocalhost(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

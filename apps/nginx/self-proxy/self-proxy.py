@@ -71,6 +71,11 @@ class SelfProxy(test_app.TestApp):
                 print('Response for large file had size {}'.format(len(response.content)))
                 raise test_utils.TestException('Incorrect size for returned data')
 
+        logs = container.logs()
+        for line in logs.stdout and logs.stderr:
+            if "Enclave console connection failure" in line:
+                raise test_utils.TestException('Unexpected console connection failure observed')
+
         return True
 
 if __name__ == '__main__':
