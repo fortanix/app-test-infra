@@ -22,7 +22,7 @@ class TestBash(test_app.TestApp):
         ]})
 
         container_args = { 'memsize':'128M', 'nitro_memsize':'2G',
-                           'container_env': ['ENCLAVEOS_DEBUG=debug', 'PLATFORM=nitro'] }
+                           'container_env': ['PLATFORM=nitro'] }
 
         for version in [test_app.BASE_UBUNTU_VERSION, 'bionic-20180821']:
             container = self.container(test_app.BASE_UBUNTU_CONTAINER, registry='library',

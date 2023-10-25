@@ -14,8 +14,7 @@ class TestBitnamiPostgresql(test_app.TestApp):
         status = False
         container = self.container(registry='docker.io', image='bitnami/postgresql',
                                    image_version='15.1.0-debian-11-r20', memsize='2048M',
-                                   container_env=['ALLOW_EMPTY_PASSWORD=yes', 'ENCLAVEOS_DEBUG=debug', 'RUST_LOG=info']
-                                   )
+                                   container_env=['ALLOW_EMPTY_PASSWORD=yes'])
         container.prepare()
         container.run()
 
