@@ -384,7 +384,7 @@ class AppTestContainer(object):
                  pexpect=False, pexpect_tmo=PEXPECT_TIMEOUT, certificates=None,
                  ca_certificates=None, hostname=None, name=None, user=None,
                  app=None, java_mode=None, rw_dirs=None, ro_dirs=None,
-                 allow_all_env=None, allow_some_env=None, container_env=None,
+                 allow_all_env=None, allow_some_env=None, container_env={'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE':'1'},
                  post_conv_entry_point=None, network=None, zircon_debug=None,
                  log_file_path=None, zircon_panic_expected=None,
                  expected_status=0, dirs_to_copy=None, skip_converter_version_check=False,
@@ -420,6 +420,21 @@ class AppTestContainer(object):
         # to the application's manifest. They can be used with the allow_some_env input param
         # to pass through a set of allowed env variables at runtime.
         self.container_env = container_env
+        if (self.container_env is not None):
+            # For testing we disable fetching of default certs by default
+
+            # ToDo ZIRC-5887 : For now some apptests pass container_env
+            # as a dict, some as a list and some as a set. We should fix this.
+            if (str(type(self.container_env)) == "<class 'dict'>" and
+                'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE' not in self.container_env):
+                self.container_env ['ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE'] = '1'
+            elif (str(type(self.container_env)) == "<class 'set'>" and
+                 not any(x.startswith('ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE') for x in self.container_env)):
+                self.container_env.add('ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=1')
+            elif (str(type(self.container_env)) == "<class 'list'>" and
+                 not any(x.startswith('ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE') for x in self.container_env)):
+                self.container_env.append('ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=1')
+
         self.entrypoint = entrypoint
         # TODO: put some more thought into an appropriate generic mechanism
         # for combining run_args and test-specified args. see also
