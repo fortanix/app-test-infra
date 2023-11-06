@@ -24,7 +24,9 @@ class TestPythonSalmFS(TestApp):
                                    memsize='2048M',
                                    entrypoint=['/root/read-write.py'],
                                    enable_overlay_fs_persistence=True,
-                                   container_env=['ENCLAVEOS_DEBUG=debug', 'RUST_LOG=info',
+                                   container_env=['ENCLAVEOS_DEBUG=debug',
+                                                  'RUST_LOG=info',
+                                                  'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true',
                                                   dsm_endpoint_env_var,
                                                   dsm_api_key])
         container.copy_to_input_image(['flushcache.sh', 'read-write.py', 'testfile'], '/root/')

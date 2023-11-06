@@ -39,6 +39,7 @@ class TestWebsphere(TestApp):
             image_version = '23.0.0.2-full-java17-openj9'
             extra_container_args['registry'] ='library'
             TestWebsphere.expected_index_file = 'nitro-output.html'
+            extra_container_args['container_env'] = {'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE' : 'true'}
         else:
             input_image = 'zapps/websphere-liberty'
             TestWebsphere.expected_index_file = 'reference-output.html'

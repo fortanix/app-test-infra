@@ -12,7 +12,10 @@ class TestHostname(test_app.TestApp):
     def run(self):
         container = self.container('zapps/python-web-server', image_version='2023021014-868084a',
                                    entrypoint=['/root/test-hostname.py'],
-                                   container_env=['ALLOW_EMPTY_PASSWORD=yes', 'ENCLAVEOS_DEBUG=debug', 'RUST_LOG=debug'],
+                                   container_env=['ALLOW_EMPTY_PASSWORD=yes',
+                                                  'ENCLAVEOS_DEBUG=debug',
+                                                  'RUST_LOG=debug',
+                                                  'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'],
                                    memsize="2048M" )
         container.copy_to_input_image(['test-hostname.py'], '/root/')
         container.prepare()

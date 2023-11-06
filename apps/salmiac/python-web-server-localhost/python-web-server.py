@@ -13,6 +13,7 @@ class TestPythonWebServerLocalhost(test_app.TestApp):
                                    cpu_count=2,
                                    allow_docker_push_failure=True,
                                    container_env=["TEST_LOCALHOST=true",
+                                                  'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true',
                                                   "ENCLAVEOS_DEBUG=debug"])
         container.prepare()
         return container.run_and_compare_stdout(["Established a connection to a python web server!"])

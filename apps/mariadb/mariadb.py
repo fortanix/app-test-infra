@@ -67,7 +67,13 @@ class TestMysql(test_app.TestApp):
         # Connection to DSM works only on bridge network in nitro
         nitro_args = {}
         if os.environ['PLATFORM'] == 'nitro':
-            nitro_args = {'network':'bridge'}
+            nitro_args = {'network':'bridge',
+                          'container_env': [ 'MYSQL_ROOT_PASSWORD={}'.format(passwd),
+                                             'ENCLAVEOS_DEBUG=debug',
+                                             'RUST_LOG=info',
+                                             dsm_endpoint_env_var,
+                                             dsm_api_key,
+                                             'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'] }
 
         container = self.container(
             'zapps/mariadb',
@@ -82,11 +88,6 @@ class TestMysql(test_app.TestApp):
             pexpect_tmo=1200,
             allow_some_env=['MYSQL_ROOT_PASSWORD'],
             manifest_env=['MYSQL_ROOT_PASSWORD={}'.format(passwd)],
-            container_env=['MYSQL_ROOT_PASSWORD={}'.format(passwd),
-                           'ENCLAVEOS_DEBUG=debug',
-                           'RUST_LOG=info',
-                           dsm_endpoint_env_var,
-                           dsm_api_key],
             enable_overlay_fs_persistence=True,
             **nitro_args)
         container.prepare()

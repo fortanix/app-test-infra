@@ -21,7 +21,8 @@ class TestPythonWebServer(test_app.TestApp):
                                    image_version='2022120209-aae7f4b',
                                    ports=ports,
                                    nitro_memsize="2048M",
-                                   cpu_count=2)
+                                   cpu_count=2,
+                                   container_env=['ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'])
         container.prepare()
         container.run()
 

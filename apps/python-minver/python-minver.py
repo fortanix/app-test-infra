@@ -10,7 +10,8 @@ class PythonMinVerCheck(test_app.TestApp):
     def run(self):
         container = self.container('zapps/python',
                                     entrypoint=['/root/test-python-version.py'],
-                                    memsize="256M", nitro_memsize="2048M")
+                                    memsize="256M", nitro_memsize="2048M",
+                                    container_env={ "ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE" : "true" })
         container.copy_to_input_image(['test-python-version.py'], '/root/')
         container.prepare()
         container.run()

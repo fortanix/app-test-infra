@@ -40,7 +40,8 @@ class SelfProxy(test_app.TestApp):
 
         container = self.container('nginx', registry='library', ports=ports,
                                    memsize='256M', nitro_memsize='2G', image_version=image_version,
-                                   rw_dirs=rw_dirs)
+                                   rw_dirs=rw_dirs,
+                                   container_env=['ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'])
         container.copy_to_input_image(['default.conf'], '/etc/nginx/conf.d')
         container.copy_to_input_image(['data'], '/usr/share/nginx/html')
         container.prepare()

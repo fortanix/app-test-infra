@@ -40,9 +40,10 @@ class TestElasticSearch(test_app.TestApp):
             input_image = 'elasticsearch'
             image_version = '8.7.0'
             extra_container_args['registry'] ='library'
-            extra_container_args['container_env'] = {'ELASTIC_PASSWORD': random_password,
-                                                     'discovery.type': 'single-node',
-                                                     'xpack.security.enabled':'true'}
+            extra_container_args['container_env'] = {'ELASTIC_PASSWORD' : random_password,
+                                                     'discovery.type' : 'single-node',
+                                                     'xpack.security.enabled' : 'true',
+                                                     'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE' : 'true'}
             TestElasticSearch.expected_index_file = 'reference_index_file_nitro.html'
             TestElasticSearch.delay_server_check_status = 60 # in seconds
 
