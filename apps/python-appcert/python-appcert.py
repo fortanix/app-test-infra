@@ -37,7 +37,10 @@ class TestPythonAppcert(TestApp):
             }
         ]})
         DEFAULT_CERT_TEST = 99999
-        key_sizes = [555, 1024, 92845, 2048, DEFAULT_CERT_TEST]
+        key_sizes = [555, 1024, 92845, 2048
+                     # TODO ZIRC-5890: Enable this once SALM-457 is done
+                     #, DEFAULT_CERT_TEST
+                     ]
         count = 2
         container = None
         entrypoint_script = ""
