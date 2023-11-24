@@ -31,7 +31,7 @@ class TestBash(test_app.TestApp):
                                        ca_certificates=ca_cert_info, **container_args)
             container.copy_to_input_image(['test1.sh', 'test2.sh', 'test5.sh' ], '/root/')
             container.prepare()
-            if container.run_and_compare_stdout(['test1 passed']):
+            if container.run_and_compare_stdout(['test1 passed'], cleanup=True):
                 # It would be better if run_and_compare_stdout did this, and logged the output
                 self.result('test1-{}'.format(version), 'PASSED')
             else:
@@ -42,7 +42,7 @@ class TestBash(test_app.TestApp):
                                    entrypoint=['/root/test3.sh'], **container_args)
         container.copy_to_input_image(['test3.sh'], '/root/')
         container.prepare()
-        if container.run_and_compare_stdout(['Printed to /dev/stdout', 'test3 passed']):
+        if container.run_and_compare_stdout(['Printed to /dev/stdout', 'test3 passed'], cleanup=True):
             self.result('test3', 'PASSED')
         else:
             self.result('test3', 'FAILED')
@@ -53,7 +53,7 @@ class TestBash(test_app.TestApp):
                                     entrypoint=['/root/test6.py'], **container_args)
         container.copy_to_input_image(['test6.py' ], '/root/')
         container.prepare()
-        if container.run_and_compare_stdout(['test6 passed']):
+        if container.run_and_compare_stdout(['test6 passed'], cleanup=True):
             self.result('test6', 'PASSED')
         else:
             self.result('test6', 'FAILED')

@@ -525,17 +525,32 @@ class AppTestContainer(object):
             print('\n')
             raise TestException('Output mismatch')
 
+    """ rerun and cleanup are optional parameters to the following 4
+        functions which are set to False by default. It is upto the
+        caller to use these as needed for testing apps. Note that once
+        cleanup is performed, rerun of the same container will not be
+        possible later in the test since the container would be cleaned
+        up from the docker cache.
+    """
+
     # Searches only one line in the output.
-    def run_and_search_logs(self, expected, rerun=False):
+    def run_and_search_logs(self, expected, rerun=False, cleanup=False):
         logs = self.run_and_get_logs(rerun)
         print(logs)
-        return self.search_one_line(logs, expected)
+        status = self.search_one_line(logs, expected)
 
-    def run_and_search_multiple_lines_logs(self, expected_lines, rerun=False):
+        if cleanup:
+            global_cleanup(status)
+
+        return status
+
+    def run_and_search_multiple_lines_logs(self, expected_lines, rerun=False, cleanup=False):
         count = len(expected_lines)
         logs = self.run_and_get_logs(rerun)
 
         if (count < 1):
+            if cleanup:
+                global_cleanup(True)
             return True
         num_lines_got = 0
 
@@ -554,17 +569,26 @@ class AppTestContainer(object):
             raise TestException('All lines not found')
         else:
             print("All lines found\n")
+            if cleanup:
+                global_cleanup(True)
             return True
-
-    def run_and_compare_stdout(self, expected, rerun=False):
+    def run_and_compare_stdout(self, expected, rerun=False, cleanup=False):
         logs = self.run_and_get_logs(rerun=rerun)
+        status = compare_output(logs.stdout, expected)
 
-        return compare_output(logs.stdout, expected)
+        if cleanup:
+            global_cleanup(status)
 
-    def run_and_compare_stderr(self, expected, rerun=False):
+        return status
+
+    def run_and_compare_stderr(self, expected, rerun=False, cleanup=False):
         logs = self.run_and_get_logs(rerun=rerun)
+        status = compare_output(logs.stderr, expected)
 
-        return compare_output(logs.stderr, expected)
+        if cleanup:
+            global_cleanup(status)
+
+        return status
 
     def run_and_return_logs(self):
         """ Run the container, wait for it to finish, and return the logs. """
