@@ -39,21 +39,23 @@ else
     exit 1
 fi
 
-if [ -z "$AWS_CONFIG" ] ; then
+if [[ -z "$AWS_CONFIG" && -z "$IS_NITRO" ]] ; then
     echo "Environment variable AWS_CONFIG was not set"
     aws_cred_help
     exit 1
 fi
 
-if [ -z "$AWS_CREDENTIALS" ] ; then
+if [[ -z "$AWS_CREDENTIALS" && -z "$IS_NITRO" ]] ; then
     echo "Environment variable AWS_CREDENTIALS was not set"
     aws_cred_help
     exit 1
 fi
 
-mkdir -p /home/zircon-tests/.aws
-echo "$AWS_CONFIG" | base64 -d > /home/zircon-tests/.aws/config
-echo "$AWS_CREDENTIALS" | base64 -d > /home/zircon-tests/.aws/credentials
+if [ -z "$IS_NITRO" ] ; then
+    mkdir -p /home/zircon-tests/.aws
+    echo "$AWS_CONFIG" | base64 -d > /home/zircon-tests/.aws/config
+    echo "$AWS_CREDENTIALS" | base64 -d > /home/zircon-tests/.aws/credentials
+fi
 
 echo "PLATFORM=$PLATFORM" > /home/zircon-tests/tests-env-vars
 echo "FLAVOR=$FLAVOR" >> /home/zircon-tests/tests-env-vars
@@ -69,8 +71,8 @@ if [ -n "$IS_NITRO" ] ; then
   fi
 
   echo "ECR_PASSWORD=$ECR_PASSWORD" >> /home/zircon-tests/tests-env-vars
-  echo "AWS_CONFIG=$AWS_CONFIG" >> /home/zircon-tests/tests-env-vars
-  echo "AWS_CREDENTIALS=$AWS_CREDENTIALS" >> /home/zircon-tests/tests-env-vars
+  #echo "AWS_CONFIG=$AWS_CONFIG" >> /home/zircon-tests/tests-env-vars
+  #echo "AWS_CREDENTIALS=$AWS_CREDENTIALS" >> /home/zircon-tests/tests-env-vars
   echo "FORTANIX_API_KEY=$FORTANIX_API_KEY" >> /home/zircon-tests/tests-env-vars
 
   # For some reason the default blobs paths is not being used by nitro-cli
