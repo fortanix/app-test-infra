@@ -28,6 +28,7 @@ class TestSpring(test_app.TestApp):
 
         db_container = self.container('zapps/spring-mysql-db',
                                       converted_image=converted_db,
+                                      image_version='2023111911-5dba604',
                                       memsize='2048M',
                                       thread_num=130,
                                       manifest_env=['MALLOC_ARENA_MAX=1'],
