@@ -52,6 +52,8 @@ if [ -z "$AWS_CREDENTIALS" ] ; then
 fi
 
 mkdir -p /home/zircon-tests/.aws
+
+set +x
 echo "$AWS_CONFIG" | base64 -d > /home/zircon-tests/.aws/config
 echo "$AWS_CREDENTIALS" | base64 -d > /home/zircon-tests/.aws/credentials
 
@@ -80,6 +82,7 @@ if [ -n "$IS_NITRO" ] ; then
   echo "IS_NITRO=true" >> /home/zircon-tests/tests-env-vars
   sudo losetup
 fi
+set -x
 
 chown -R zircon-tests:zircon-tests /home/zircon-tests/.aws
 usermod -aG root zircon-tests
