@@ -1342,7 +1342,6 @@ class NitroDockerContainer(DockerContainer):
 
         try:
             conversion_req = json.dumps(request, default=lambda x: x.__dict__)
-            print(conversion_req)
             request_file.write(conversion_req)
             request_file.close()
             ret, conv_out, conv_err = run_converter(cmd, self.image)
