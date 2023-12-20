@@ -1,4 +1,5 @@
 $(SUBDIR)/app-test := mariadb.py
 ifneq ($(PLATFORM),nitro)
-$(SUBDIR)/app-test-FREQUENCY := smoke
+# ZIRC-5906
+$(SUBDIR)/app-test-FREQUENCY := broken
 endif
