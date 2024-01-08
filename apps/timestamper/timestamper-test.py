@@ -12,10 +12,9 @@
 #
 
 import os
-from test_app import main, \
-                     NativeContainer, TestApp
-from test_utils import TestException, parse_time_string
 import time
+from test_app import NativeContainer, TestApp, main
+from test_utils import TestException, parse_time_string
 
 
 class TestTimestamper(TestApp):

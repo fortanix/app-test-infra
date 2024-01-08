@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-import test_app
 import os
+import test_app
+
 
 class TestIozone(test_app.TestApp):
     def run(self):

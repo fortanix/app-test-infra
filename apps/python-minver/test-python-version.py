@@ -2,6 +2,7 @@
 
 import os
 import sys
+
 PYTHON_MIN_VER_MJ = 3
 PYTHON_MIN_VER_MN = 9
 

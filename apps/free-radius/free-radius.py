@@ -7,6 +7,7 @@
 import test_app
 import time
 
+
 class TestFreeRadius(test_app.TestApp):
     retries = 10
 

@@ -8,6 +8,7 @@ import argparse
 import os
 from test_app import TestApp, main
 
+
 class TestJTA(TestApp):
     test_timeout = 1500
     file_name = 'jtatests01.txt'

@@ -1,5 +1,6 @@
-from locust import HttpUser, TaskSet
 import random
+from locust import HttpUser, TaskSet
+
 
 def get100(l):
     l.client.get('/random/100/%d' % random.randint(1, 100))

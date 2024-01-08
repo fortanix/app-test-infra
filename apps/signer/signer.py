@@ -16,6 +16,7 @@ import test_app
 import test_utils
 import traceback
 
+
 class SignerTest(test_app.TestApp):
     def __init__(self, run_args, _):
         super(SignerTest, self).__init__(run_args, [])

@@ -4,6 +4,7 @@ import os
 import test_app
 from datetime import datetime
 
+
 def get_time_stamp():
     now = datetime.now()
     return now.strftime("%H:%M:%S")

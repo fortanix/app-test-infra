@@ -8,8 +8,10 @@
 import json
 import os
 import time
-from test_app import MalborkContainer, TestApp, main, get_zone_cert_local_malbork, get_ip_address
-from test_utils import TestException, is_valid_keysize, check_conv_logs
+from test_app import (MalborkContainer, TestApp, get_ip_address,
+                      get_zone_cert_local_malbork, main)
+from test_utils import TestException, check_conv_logs, is_valid_keysize
+
 
 class TestPythonAppcert(TestApp):
 

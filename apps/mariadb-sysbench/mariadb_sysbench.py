@@ -10,13 +10,13 @@
 ##
 ###############################################################
 
-import MySQLdb
 import argparse
+import MySQLdb
 import os
+import pandas
 import pexpect
 import test_app
 from test_utils import random_string
-import pandas
 
 MYSQL_PORT = 3306
 

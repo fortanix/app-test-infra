@@ -8,6 +8,7 @@ import argparse
 import os
 from test_app import TestApp, main
 
+
 class TestJTSRemoteTests(TestApp):
     test_timeout = 2000
     file_name = 'jtsremote.txt'

@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
-import test_app
-import tarfile
 import io
+import tarfile
+import test_app
+
 
 class TestFschecksum(test_app.TestApp):
     def run(self):

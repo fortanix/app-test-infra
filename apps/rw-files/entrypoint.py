@@ -8,6 +8,7 @@
 #
 import os
 
+
 def open_all(path):
     if path is None:
         return

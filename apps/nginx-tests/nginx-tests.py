@@ -9,6 +9,7 @@ import re
 from test_app import TestApp, main
 from test_utils import remove_ignore_nonexistent
 
+
 class TestNginxTests(TestApp):
     def __init__(self, run_args, test_arg_list):
         super(TestNginxTests, self).__init__(run_args, [])

@@ -35,6 +35,7 @@
 import docker
 import test_app
 
+
 class SignerLegacyTest(test_app.TestApp):
     def __init__(self, run_args, _):
         super(SignerLegacyTest, self).__init__(run_args, [])

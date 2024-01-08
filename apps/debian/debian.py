@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-import test_app
 import argparse
+import test_app
+
 
 class TestDebian(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

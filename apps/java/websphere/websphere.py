@@ -6,9 +6,10 @@
 
 import filecmp
 import os
+import time
 from test_app import TestApp, main
 from test_utils import TestException
-import time
+
 
 class TestWebsphere(TestApp):
     retries = 60

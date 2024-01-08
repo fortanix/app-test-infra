@@ -4,9 +4,9 @@ This test tries to send and receive huge amount of data to a webserver via http
 post request with
 '''
 
-from http.server import HTTPServer, CGIHTTPRequestHandler
-from multiprocessing import Process, Manager
 import requests
+from http.server import CGIHTTPRequestHandler, HTTPServer
+from multiprocessing import Manager, Process
 
 REQUEST_SUCCESS_CODE = '<Response [200]>'
 httpd = None

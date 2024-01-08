@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-import time
 import requests
 import test_app
 import test_utils
+import time
 
 STARTUP_RETRIES = 10
 HOST_PORT = 8080

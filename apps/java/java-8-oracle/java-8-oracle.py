@@ -2,6 +2,7 @@
 
 import os
 import test_app
+
 # Test to check if the Hello World program works on the oracle-java8 platform with
 # custom jvm options:
 # CompressedClassSpaceSize - Size of region for compressed class pointers (1 GB by default)

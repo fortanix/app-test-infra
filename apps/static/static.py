@@ -2,6 +2,7 @@
 
 import test_app
 
+
 class TestStaticClient(test_app.TestApp):
     def run(self):
         container = self.container('zapps/static', memsize='128M')

@@ -3,9 +3,9 @@
 This test tries to pickle and _pickle load and store with various data sizes
 '''
 
+import _pickle
 import os
 import pickle
-import _pickle
 import traceback
 
 K = 1024

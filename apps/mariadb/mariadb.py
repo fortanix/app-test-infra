@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-import MySQLdb
 import argparse
+import MySQLdb
 import os
 import pexpect
 import test_app

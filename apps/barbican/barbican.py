@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
+import argparse
 import os
 import subprocess
 import test_app
 import test_utils
 import time
-import argparse
 from test_utils import get_locust_version
 
 BARBICAN_PORT = 9311

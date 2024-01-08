@@ -4,16 +4,16 @@
 #
 
 import argparse
+import datetime
 import docker
 import filecmp
 import json
 import os
-from test_app import TestApp, main
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent
-import time
 import string_table
-import datetime
+import time
+from test_app import TestApp, main
+from test_utils import TestException, remove_ignore_nonexistent
+
 
 class TestPythonSrc(TestApp):
     # We could reduce the run duration by caliberating ut_timeout

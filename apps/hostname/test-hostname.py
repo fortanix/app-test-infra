@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import socket
 import http.server
 import requests
+import socket
 import socketserver
-import time
 import threading
+import time
 
 PORT = 8080
 STARTUP_RETRIES = 10

@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
-import os
-import subprocess
-import test_app
 import argparse
 import MySQLdb
-from time import sleep
+import os
 import requests
+import subprocess
+import test_app
+from time import sleep
+
 
 class TestApache(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

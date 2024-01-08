@@ -2,6 +2,7 @@
 
 import test_app
 
+
 class TestDnsClient(test_app.TestApp):
     def run(self):
         container = self.container('zapps/dnsclient', memsize='128M')

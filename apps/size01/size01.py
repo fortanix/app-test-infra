@@ -4,6 +4,7 @@ import argparse
 import test_app
 from test_utils import get_max_enclave_size
 
+
 class TestSize01(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):
         super(TestSize01, self).__init__(run_args, [])

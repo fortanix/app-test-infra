@@ -3,6 +3,7 @@
 import os
 import test_app
 
+
 class TestBlender(test_app.TestApp):
     input_file = 'blender_input'
     std_result_file = 'blender_output'

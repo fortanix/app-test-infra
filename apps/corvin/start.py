@@ -7,9 +7,9 @@
 # by  enclaveos   manager  in   /opt/fortanix/enclave-os/app-config/rw/.  Make  sure 
 # that static copy of rw directory is copied to the /tmp/ directory of the container.
 
-import os
-import json
 import filecmp
+import json
+import os
 
 PORTS_PATH="/opt/fortanix/enclave-os/app-config/rw/"
 STATIC_PORT_PATH="/root/rw/"

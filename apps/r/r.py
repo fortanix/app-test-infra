@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 import test_app
-from test_utils import TestException
 import traceback
+from test_utils import TestException
+
 
 class TestR(test_app.TestApp):
     SCRIPT_OUTPUT = \

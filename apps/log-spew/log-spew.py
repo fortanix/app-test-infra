@@ -4,6 +4,7 @@ import os
 import test_app
 from test_utils import TestException
 
+
 class TestLogSpew(test_app.TestApp):
     def __init__(self, run_args, _):
         super(TestLogSpew, self).__init__(run_args, [])

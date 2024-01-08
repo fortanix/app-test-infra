@@ -6,7 +6,8 @@
 # is wrong when things don't work out.
 #
 
-import os, sys
+import os
+import sys
 
 if 'ENCLAVEOS_RUNTIME' in os.environ:
     # TODO: this is only correct for build trees. when installed,

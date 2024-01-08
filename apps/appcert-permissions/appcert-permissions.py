@@ -8,6 +8,7 @@
 import json
 import test_app
 
+
 class AppcertPermissions(test_app.TestApp):
     def __init__(self, run_args, _):
         super(AppcertPermissions, self).__init__(run_args, [])

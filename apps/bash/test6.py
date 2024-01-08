@@ -6,7 +6,9 @@ the ENV commands in a Dockerfile.
 The 'setup' part of this test is in the zircon-apps/ubuntu/Dockerfile directory.
 """
 
-import os, sys
+import os
+import sys
+
 
 def var_matches(key, val):
     if os.getenv(key) != val:

@@ -8,6 +8,7 @@
 import os
 from test_app import TestApp, main
 
+
 class TestCsvLoadParse(TestApp):
 
     native_data_file = 'ntime.log'

@@ -12,6 +12,7 @@
 
 import test_app
 
+
 class RwFiles(test_app.TestApp):
     def __init__(self, run_args, _):
         super(RwFiles, self).__init__(run_args, [])

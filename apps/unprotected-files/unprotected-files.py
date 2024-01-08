@@ -10,6 +10,7 @@
 
 import test_app
 
+
 class UnprotectedFiles(test_app.TestApp):
     def __init__(self, run_args, _):
         super(UnprotectedFiles, self).__init__(run_args, [])

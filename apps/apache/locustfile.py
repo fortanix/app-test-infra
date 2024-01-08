@@ -1,7 +1,6 @@
-from locust import HttpLocust, TaskSet
-import random
 import os
 import random
+from locust import HttpLocust, TaskSet
 
 
 def get100(l):

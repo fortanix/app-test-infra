@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+import csv
 import os
 import test_app
-from test_utils import is_sgx
-import csv
 from bs4 import BeautifulSoup
+from test_utils import is_sgx
 
 # The scripts facilitates the running of activemq-artemis JMS test suite by
 # specifying the required env var and then parsing the reports/results to match

@@ -4,9 +4,11 @@
 #
 
 import os
-from test_app import TestApp, main
-from string_table import PRODUCT, PRODUCT_VERSION, STARTUP_BANNER_1, STARTUP_BANNER_2
 from enum import Enum
+from string_table import (PRODUCT, PRODUCT_VERSION, STARTUP_BANNER_1,
+                          STARTUP_BANNER_2)
+from test_app import TestApp, main
+
 
 class TestFlask(TestApp):
     name = 'flask-test'

@@ -4,8 +4,9 @@
 # that it works.
 
 import time
-from test_app import main, TestApp
+from test_app import TestApp, main
 from test_utils import TimeoutException
+
 
 class TestTimeout(TestApp):
     def __init__(self, run_args, test_arg_list):

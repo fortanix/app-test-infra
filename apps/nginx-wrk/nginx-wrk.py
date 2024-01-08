@@ -13,11 +13,12 @@
 # or 'h' for hours. The default unit is seconds.
 #
 
-from test_app import main, NativeContainer, TestApp
-from test_utils import TestException, parse_time_string
 import os
 import pandas
 import time
+from test_app import NativeContainer, TestApp, main
+from test_utils import TestException, parse_time_string
+
 
 class TestNginxWrk(TestApp):
     retries = 15

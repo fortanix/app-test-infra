@@ -3,6 +3,7 @@
 import os
 import test_app
 
+
 class TestOpenJDKJVM(test_app.TestApp):
     default_timeout_s = 1200
 

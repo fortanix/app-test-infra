@@ -1,5 +1,6 @@
 from locust import HttpUser, TaskSet, events
 
+
 def getmain(l):
     l.client.get('/', verify=False)
 

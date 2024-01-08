@@ -9,6 +9,7 @@ import test_app
 import time
 from test_utils import TestException
 
+
 class TestElasticSearch(test_app.TestApp):
     default_timeout_s = 60 * 60
     ES_REQUEST_PORT   = 9200

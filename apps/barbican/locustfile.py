@@ -1,12 +1,11 @@
-from locust import HttpUser, TaskSet, events
-import locust
 import argparse
-from locust.clients import HttpSession
-import random
 import json
-from urllib.parse import urlparse
+import locust
+import random
+from locust import HttpUser, TaskSet, events
+from locust.clients import HttpSession
 from test_utils import get_string_bytes
-
+from urllib.parse import urlparse
 
 LEN_SMALL = 32
 LEN_MEDIUM = 4096

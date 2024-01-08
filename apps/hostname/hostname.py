@@ -8,6 +8,7 @@
 import test_app
 import time
 
+
 class TestHostname(test_app.TestApp):
     def run(self):
         container = self.container('zapps/python-web-server', image_version='2023021014-868084a',

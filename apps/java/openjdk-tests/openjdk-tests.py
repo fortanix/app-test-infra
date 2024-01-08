@@ -8,8 +8,8 @@
 import os
 import test_app
 import time
-
 from test_utils import TestException
+
 
 class TestOpenJdk(test_app.TestApp):
     test_image_name = 'zapps/openjdk-tests'

@@ -5,6 +5,7 @@ import os
 import string_table
 import test_app
 
+
 class TestOpenJ9(test_app.TestApp):
     default_timeout_s = 1200
 

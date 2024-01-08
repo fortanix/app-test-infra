@@ -1,10 +1,10 @@
-from locust import HttpUser, TaskSet, events
-import locust
 import argparse
-from locust.clients import HttpSession
-import random
 import json
+import locust
 import os
+import random
+from locust import HttpUser, TaskSet, events
+from locust.clients import HttpSession
 from test_utils import get_string_bytes
 
 LEN_SMALL = 32

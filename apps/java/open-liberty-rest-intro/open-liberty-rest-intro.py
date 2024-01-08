@@ -8,6 +8,7 @@ import test_app
 import time
 from test_utils import TestException
 
+
 class TestOLRestIntro(test_app.TestApp):
     retries = 60
     saved_home_file = 'index.html'

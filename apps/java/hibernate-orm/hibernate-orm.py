@@ -16,6 +16,7 @@ import os
 import test_app
 from bs4 import BeautifulSoup
 
+
 class TestJPA(test_app.TestApp):
     default_timeout_s = 3000
     def __init__(self, run_args, test_arg_list):

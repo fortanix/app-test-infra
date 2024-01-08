@@ -5,9 +5,11 @@
 
 
 import json
-from test_utils import random_string
 import test_app
-from test_app import MalborkContainer,EMContainer, TestApp, main, get_zone_cert_local_malbork, get_ip_address
+from test_app import (EMContainer, MalborkContainer, TestApp, get_ip_address,
+                      get_zone_cert_local_malbork, main)
+from test_utils import random_string
+
 
 class TestCorvin(TestApp):
 

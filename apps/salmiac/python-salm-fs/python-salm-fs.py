@@ -8,8 +8,9 @@
 # Also check username and hostname listed in the enclave
 # kernel
 
-from test_app import TestApp, main, SMARTKEY_ENDPOINT
 import os
+from test_app import SMARTKEY_ENDPOINT, TestApp, main
+
 
 class TestPythonSalmFS(TestApp):
 

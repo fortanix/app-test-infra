@@ -8,6 +8,7 @@ import argparse
 import os
 from test_app import TestApp, main
 
+
 class TestJTSCurrentTests(TestApp):
     test_timeout = 6000
     file_name = 'currenttests01.txt'

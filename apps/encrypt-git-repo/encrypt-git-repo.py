@@ -3,6 +3,7 @@
 import test_app
 from test_utils import TestException
 
+
 # Test for ZIRC-5252 - Encrypt a directory containing
 # a git repository
 class TestEncryptGitRepo(test_app.TestApp):

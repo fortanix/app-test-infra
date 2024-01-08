@@ -3,6 +3,7 @@
 import test_app
 from test_utils import TestException
 
+
 class TestNuma(test_app.TestApp):
     def run(self):
         container = self.container(

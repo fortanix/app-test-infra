@@ -10,9 +10,7 @@ import sys
 import time
 from OpenSSL import crypto
 from test_app import MalborkContainer, TestApp, main
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent
-
+from test_utils import TestException, remove_ignore_nonexistent
 
 
 class NginxEnum :

@@ -7,8 +7,8 @@ import test_app
 import time
 import traceback
 from OpenSSL import crypto
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent, get_locust_version
+from test_utils import (TestException, get_locust_version,
+                        remove_ignore_nonexistent)
 
 NUM_TRIALS         = 10
 MANAGER_HTTP_PORT  = 8042

@@ -3,10 +3,10 @@
 import os
 import subprocess
 import test_app
-from test_utils import is_sgx, random_string, remove_ignore_nonexistent, TestException, TimeoutException
-from test_utils import get_locust_version
 import time
 import traceback
+from test_utils import (TestException, TimeoutException, get_locust_version,
+                        is_sgx, random_string, remove_ignore_nonexistent)
 
 VAULT_PORT = 8200
 START_TIMEOUT = 60

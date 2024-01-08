@@ -1,12 +1,11 @@
 #!/cpython/python
-import re
-import time
-from subprocess import Popen, PIPE
-from threading import Timer
 import os
+import re
 import signal
+import time
 from predefs import *
-
+from subprocess import PIPE, Popen
+from threading import Timer
 
 test_tot = 0
 test_passed = 0

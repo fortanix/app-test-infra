@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
+import argparse
 import os
 import test_app
-import argparse
+
 
 class TestPython(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

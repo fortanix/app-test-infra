@@ -4,6 +4,7 @@ import argparse
 import json
 import test_app
 
+
 class TestBash(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):
         super(TestBash, self).__init__(run_args, [])

@@ -9,6 +9,7 @@
 import test_app
 import time
 
+
 class TestBitnamiPostgresql(test_app.TestApp):
     def run(self):
         status = False

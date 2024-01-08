@@ -22,9 +22,10 @@
 # jdk/lambda  29 0 1 0
 # jdk/lambda/separate  4 0 3 1
 
-import sys
 import os
 import string
+import sys
+
 
 def process_file(f):
     total = dict()

@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
+import argparse
 import docker
 import io
 import test_app
-import argparse
+
 
 class TestContainerUser(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

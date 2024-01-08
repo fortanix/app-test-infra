@@ -17,8 +17,8 @@ import os
 import shutil
 import test_app
 import time
-
 from bs4 import BeautifulSoup
+
 
 class TestMySqlConnectorJ(test_app.TestApp):
     test_image_name = 'zapps/mysql-connector-j'

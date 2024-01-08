@@ -8,8 +8,8 @@ import base64
 import docker
 import os
 import subprocess
-import traceback
 import sys
+import traceback
 
 ECR_REGION = 'us-west-1'
 ENCLAVEOS_HOME = '/home/zircon-tests'
@@ -22,6 +22,7 @@ python_dirs = [
 sys.path.extend(python_dirs)
 
 import run_app_tests
+
 
 def reconstruct_environment():
     # We need to pick up some environment variables from the original
