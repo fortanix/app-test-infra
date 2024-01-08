@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2023 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Test to convert and check that the postgresql server
 # starts up. Note that we do not run any queries to test

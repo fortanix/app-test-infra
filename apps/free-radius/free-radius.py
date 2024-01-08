@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 # Running app test free-radius. ZIRC-4360. This is a server based
 # application. This test doesn't send requests to the server for processing
 # yet. It only checks if the server is up and running.

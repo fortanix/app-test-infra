@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2019 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Run timestamper test.  Our timestamp query script is in the same
 # docker image as the timestamper server.  We convert and run the

@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2021 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Test for re-signing converted applications using the published version of the
 # signer. https://fortanix.atlassian.net/wiki/spaces/ZIR/pages/2277834786/Signing+EnclaveOS+Containers
