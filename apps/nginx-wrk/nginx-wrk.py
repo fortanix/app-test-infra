@@ -110,7 +110,6 @@ class TestNginxWrk(TestApp):
 
 
         container = self.container('zapps/nginx-bench', memsize='2G', network_mode='bridge',
-                                   image_version='2021081711-6b31d3f',
                                    rw_dirs=['/var/cache/nginx', '/var/run','/run', '/etc/nginx'],
                                    ports=ports)
         container.prepare()
