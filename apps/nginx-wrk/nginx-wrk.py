@@ -25,7 +25,7 @@ from test_utils import TestException, parse_time_string
 
 
 class TestNginxWrk(TestApp):
-    retries = 15
+    retries = 30
     EMAIL_CONTENT_FILE = 'email_content_file.html'
 
     def __init__(self, run_args, test_arg_list):
@@ -50,7 +50,7 @@ class TestNginxWrk(TestApp):
         print ("== Duration for each benchmark param run is: {} ==".format(self.duration))
 
     def get_timeout(self):
-        custom_timeout = 15 * parse_time_string(self.duration)
+        custom_timeout = 45 * parse_time_string(self.duration)
         return max(custom_timeout, self.default_timeout_s)
 
     # Function to parse the output and generate an html file to send via email
@@ -126,7 +126,7 @@ class TestNginxWrk(TestApp):
             if retval == 0:
                 up = True
                 break
-            time.sleep(1)
+            time.sleep(2)
 
         if not up:
             raise TestException('nginx is not responding')
