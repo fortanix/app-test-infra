@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2018-2019, 2021 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Nginx test using wrk to download files from the server.
 #
@@ -13,11 +17,12 @@
 # or 'h' for hours. The default unit is seconds.
 #
 
-from test_app import main, NativeContainer, TestApp
-from test_utils import TestException, parse_time_string
 import os
 import pandas
 import time
+from test_app import NativeContainer, TestApp, main
+from test_utils import TestException, parse_time_string
+
 
 class TestNginxWrk(TestApp):
     retries = 30

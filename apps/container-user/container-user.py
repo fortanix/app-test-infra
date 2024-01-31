@@ -1,9 +1,16 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+import argparse
 import docker
 import io
 import test_app
-import argparse
+
 
 class TestContainerUser(test_app.TestApp):
     def __init__(self, run_args, test_arg_list):

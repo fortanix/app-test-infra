@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2019 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Description : This app test runs the mysql-connector-j test suite. The
 # MySQL server runs outside zircon, while the test container runs in the
@@ -17,8 +21,8 @@ import os
 import shutil
 import test_app
 import time
-
 from bs4 import BeautifulSoup
+
 
 class TestMySqlConnectorJ(test_app.TestApp):
     test_image_name = 'zapps/mysql-connector-j'

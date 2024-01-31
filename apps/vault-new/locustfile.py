@@ -1,10 +1,17 @@
-from locust import HttpUser, TaskSet, events
-import locust
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import argparse
-from locust.clients import HttpSession
-import random
 import json
+import locust
 import os
+import random
+from locust import HttpUser, TaskSet, events
+from locust.clients import HttpSession
 from test_utils import get_string_bytes
 
 LEN_SMALL = 32

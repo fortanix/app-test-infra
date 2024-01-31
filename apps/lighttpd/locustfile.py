@@ -1,5 +1,13 @@
-from locust import HttpUser, TaskSet
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import random
+from locust import HttpUser, TaskSet
+
 
 def get100(l):
     l.client.get('/random/100/%d' % random.randint(1, 100))

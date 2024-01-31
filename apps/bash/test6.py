@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 """
 This script is to check environment variables are passed through correctly from
 the ENV commands in a Dockerfile.
 The 'setup' part of this test is in the zircon-apps/ubuntu/Dockerfile directory.
 """
 
-import os, sys
+import os
+import sys
+
 
 def var_matches(key, val):
     if os.getenv(key) != val:

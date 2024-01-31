@@ -13,6 +13,11 @@ and/or python and/or shell scripts that uses the test infrastructure code here.
 
 Any changes made here should verified by running tests in zircon(enclaveos) and nitro. Typically the way to do it would be to checkout the 
 development branch of this project and then run the tests in zircon and salmiac. 
+
+Python code guidelines:
+* Sort package imports alphabetically with no sections. This can be easily done with the help of the isort tool:
+  $ isort --no-sections .
+
 ### Who do I talk to? ###
 
 * Repo owner or admin

@@ -1,12 +1,18 @@
 #!/cpython/python
-import re
-import time
-from subprocess import Popen, PIPE
-from threading import Timer
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import os
+import re
 import signal
+import time
 from predefs import *
-
+from subprocess import PIPE, Popen
+from threading import Timer
 
 test_tot = 0
 test_passed = 0

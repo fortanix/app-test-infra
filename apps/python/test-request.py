@@ -1,12 +1,19 @@
 #!/usr/bin/python3
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 '''
 This test tries to send and receive huge amount of data to a webserver via http
 post request with
 '''
 
-from http.server import HTTPServer, CGIHTTPRequestHandler
-from multiprocessing import Process, Manager
 import requests
+from http.server import CGIHTTPRequestHandler, HTTPServer
+from multiprocessing import Manager, Process
 
 REQUEST_SUCCESS_CODE = '<Response [200]>'
 httpd = None

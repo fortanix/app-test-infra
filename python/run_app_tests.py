@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 #
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 # Top level script to execute app tests
 #
 
+import glob
 import os
 import subprocess
-import glob
-
 
 APPTESTS_FILE = '/home/zircon-tests/tests/app-tests-info.csv'
 CONVERTER =         '/home/zircon-tests/tests/tools/converter/bin/build_app.py'

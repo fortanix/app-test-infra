@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2021 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # This test exercises converting a container and then re-signing that
 # container with various signer options, and then verifies that the the
@@ -15,6 +19,7 @@
 import test_app
 import test_utils
 import traceback
+
 
 class SignerTest(test_app.TestApp):
     def __init__(self, run_args, _):

@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 #
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 # Test for running with a python installation that requires glibc 2.28
 # or newer. glibc 2.28 added several new symbols, including fcntl64,
 # which is used by Python. If you run with an older glibc, the dynamic

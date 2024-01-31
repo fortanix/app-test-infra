@@ -1,12 +1,18 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import os
 import subprocess
 import test_app
-from test_utils import is_sgx, random_string, remove_ignore_nonexistent, TestException, TimeoutException
-from test_utils import get_locust_version
 import time
 import traceback
+from test_utils import (TestException, TimeoutException, get_locust_version,
+                        is_sgx, random_string, remove_ignore_nonexistent)
 
 VAULT_PORT = 8200
 START_TIMEOUT = 60

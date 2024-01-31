@@ -1,15 +1,19 @@
 #!/usr/local/bin/python3
 #
-# Copyright (C) 2021 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # This   test   application   can   be   used   to   validate  corvin  functionality.
 # A static copy  of rw  directory  is  used  to  match  with  the  file  genenerated 
 # by  enclaveos   manager  in   /opt/fortanix/enclave-os/app-config/rw/.  Make  sure 
 # that static copy of rw directory is copied to the /tmp/ directory of the container.
 
-import os
-import json
 import filecmp
+import json
+import os
 
 PORTS_PATH="/opt/fortanix/enclave-os/app-config/rw/"
 STATIC_PORT_PATH="/root/rw/"

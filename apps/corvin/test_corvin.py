@@ -1,13 +1,19 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2021 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
 
 import json
-from test_utils import random_string
 import test_app
-from test_app import MalborkContainer,EMContainer, TestApp, main, get_zone_cert_local_malbork, get_ip_address
+from test_app import (EMContainer, MalborkContainer, TestApp, get_ip_address,
+                      get_zone_cert_local_malbork, main)
+from test_utils import random_string
+
 
 class TestCorvin(TestApp):
 

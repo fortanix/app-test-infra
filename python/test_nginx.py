@@ -1,6 +1,9 @@
-
 #
-# Copyright (C) 2022 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
 import filecmp
@@ -10,9 +13,7 @@ import sys
 import time
 from OpenSSL import crypto
 from test_app import MalborkContainer, TestApp, main
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent
-
+from test_utils import TestException, remove_ignore_nonexistent
 
 
 class NginxEnum :

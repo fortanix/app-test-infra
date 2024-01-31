@@ -1,8 +1,15 @@
 #!/usr/bin/python3
-
-import test_app
-import tarfile
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import io
+import tarfile
+import test_app
+
 
 class TestFschecksum(test_app.TestApp):
     def run(self):

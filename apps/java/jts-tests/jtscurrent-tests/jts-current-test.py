@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2018 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # JTS Current Tests using Narayana Toolkit
 
 import argparse
 import os
 from test_app import TestApp, main
+
 
 class TestJTSCurrentTests(TestApp):
     test_timeout = 6000

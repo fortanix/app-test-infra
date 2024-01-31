@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2018 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # Nginx test using standard nginx container.
 
@@ -9,9 +13,10 @@ import json
 import os
 import time
 from OpenSSL import crypto
-from test_app import MalborkContainer, TestApp, main, get_zone_cert_local_malbork, get_ip_address
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent
+from test_app import (MalborkContainer, TestApp, get_ip_address,
+                      get_zone_cert_local_malbork, main)
+from test_utils import TestException, remove_ignore_nonexistent
+
 
 class TestNginxAppconfig(TestApp):
     retries = 60

@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 #
 # The scripts facilitates the runnign of hibernate-orm JPA test suite by
 # spciffying the required env var and then parsing the reports to match with the
@@ -15,6 +21,7 @@
 import os
 import test_app
 from bs4 import BeautifulSoup
+
 
 class TestJPA(test_app.TestApp):
     default_timeout_s = 3000

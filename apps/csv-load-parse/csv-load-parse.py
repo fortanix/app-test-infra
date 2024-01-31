@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2019 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # csv-load-parse app test - Runs a c program that parses data and performs
 # some computation on the data
 
 import os
 from test_app import TestApp, main
+
 
 class TestCsvLoadParse(TestApp):
 

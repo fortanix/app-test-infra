@@ -1,5 +1,10 @@
-# Copyright 2017-2023 Fortanix. All Rights Reserved.
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 # Overview of test_app container classes:
 #
 # * AppTestContainer, a common base class, which includes some docker
@@ -37,9 +42,9 @@ import io
 import kubernetes
 import os
 import pexpect
-from pexpect import fdpexpect
 import random
 import re
+import requests
 import signal
 import stat
 import string
@@ -48,8 +53,10 @@ import sys
 import tarfile
 import time
 import traceback
-import requests
-from test_utils import TestResults, remove_glob, TestException, TimeoutException, remove_ignore_nonexistent, zircon_panic_msg_binary
+from pexpect import fdpexpect
+from test_utils import (TestException, TestResults, TimeoutException,
+                        remove_glob, remove_ignore_nonexistent,
+                        zircon_panic_msg_binary)
 
 if os.environ.get('IS_NITRO'):
     class Object:
@@ -61,13 +68,12 @@ if os.environ.get('IS_NITRO'):
 else:
     import string_table
 
-from types import SimpleNamespace
-
 import json
-
 # See https://github.com/pexpect/pexpect/issues/351. pexpect 4.0 and 4.1 do
 # not correctly implement non-blocking I/O in fdpexpect.
 from distutils.version import StrictVersion
+from types import SimpleNamespace
+
 if StrictVersion(pexpect.__version__) < StrictVersion('4.2.0'):
     print('Your pexpect is too old (you have {}; 4.2.0 or newer is required)'.format(StrictVersion(pexpect.__version__)))
     print('Try running the latest zircon chef recipe')

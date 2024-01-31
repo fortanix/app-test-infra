@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 ###############################################################
 ## Usage:
 ## For custom setting of Number of Rows in sysbench, set
@@ -10,13 +16,13 @@
 ##
 ###############################################################
 
-import MySQLdb
 import argparse
+import MySQLdb
 import os
+import pandas
 import pexpect
 import test_app
 from test_utils import random_string
-import pandas
 
 MYSQL_PORT = 3306
 

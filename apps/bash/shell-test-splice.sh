@@ -1,5 +1,11 @@
 #!/bin/bash -e
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 # This invocation exercises a path that cases grep to use the splice
 # call. As best as we can determine, all of these conditions must be true
 # for grep to use splice:

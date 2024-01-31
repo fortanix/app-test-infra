@@ -1,19 +1,23 @@
 #!/usr/bin/python3
 #
-# Copyright (C) 2018 Fortanix, Inc. All Rights Reserved.
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
 import argparse
+import datetime
 import docker
 import filecmp
 import json
 import os
-from test_app import TestApp, main
-from test_utils import TestException
-from test_utils import remove_ignore_nonexistent
-import time
 import string_table
-import datetime
+import time
+from test_app import TestApp, main
+from test_utils import TestException, remove_ignore_nonexistent
+
 
 class TestPythonSrc(TestApp):
     # We could reduce the run duration by caliberating ut_timeout

@@ -1,7 +1,14 @@
 #!/usr/bin/python3
-
+#
+# Copyright (c) Fortanix, Inc.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
 import os
 import test_app
+
 # Test to check if the Hello World program works on the oracle-java8 platform with
 # custom jvm options:
 # CompressedClassSpaceSize - Size of region for compressed class pointers (1 GB by default)
