@@ -986,6 +986,27 @@ class DockerContainer(AppTestContainer):
             remove_ignore_nonexistent(local_copy)
             return status
 
+    def get_converted_image_attributes(self, successful_conv_prefix_str, conv_out):
+        # Read the converter stdout logs line by line and search
+        # for the converted image attributes. Assumption made here is that
+        # all the attributes will be on one line. If the converter changes
+        # the way it logs this information, we might need to update this
+        # logic to look for a json object in the file
+        prefix_str_index = -1
+        with open(conv_out, "r") as rf:
+            line = rf.readline()
+            while line:
+                prefix_str_index = line.find(successful_conv_prefix_str)
+                if prefix_str_index >= 0:
+                    break
+                line = rf.readline()
+        if (prefix_str_index < 0):
+            raise ValueError('Failed to find converted image attributes')
+        self.converted_image_attributes = json.loads(line[line.find(successful_conv_prefix_str)
+                                                          + len(successful_conv_prefix_str):])
+        print('printing attributes {}'.format(self.converted_image_attributes))
+
+
 class KubeContainer(AppTestContainer):
     """ Mixin for running containers with kubernetes. Cannot be instantiated
         directly, needs something to provide an image. Inherits from
@@ -1318,8 +1339,7 @@ class NitroDockerContainer(DockerContainer):
         request.converter_options.push_converted_image = not self.allow_docker_push_failure
 
         if os.getenv('ENCLAVEOS_DEBUG', "") == "debug" or os.getenv('FLAVOR', "") == "debug":
-            # Disabled until SALM-396 is fixed
-            request.nitro_enclaves_options.debug = False
+            request.nitro_enclaves_options.debug = True
 
         if self.entrypoint:
             request.converter_options.entry_point = self.entrypoint
@@ -1359,6 +1379,12 @@ class NitroDockerContainer(DockerContainer):
             print('Converter error logs:\n')
             print(open(conv_err, "r").read())
             raise TestException('Converter returned an error')
+
+        self.get_converted_image_attributes(successful_conv_prefix_str="Successful nitro conversion: ", conv_out=conv_out)
+
+    def get_image_metadata(self):
+        return self.converted_image_attributes
+
 
     def prepare_container(self, extra_args=None):
         container_kwargs = {}

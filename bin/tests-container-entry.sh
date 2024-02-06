@@ -81,6 +81,14 @@ if [ -n "$IS_NITRO" ] ; then
   echo "AWS_CREDENTIALS=$AWS_CREDENTIALS" >> /home/zircon-tests/tests-env-vars
   echo "FORTANIX_API_KEY=$FORTANIX_API_KEY" >> /home/zircon-tests/tests-env-vars
 
+  # Environment variables used for default app cert testing
+  echo "NODE_AGENT=$NODE_AGENT" >> /home/zircon-tests/tests-env-vars
+  echo "DEFAULT_EOS_CCM_URL=$DEFAULT_EOS_CCM_URL" >> /home/zircon-tests/tests-env-vars
+  echo "DEFAULT_EOS_CCM_USERNAME=$DEFAULT_EOS_CCM_USERNAME" >> /home/zircon-tests/tests-env-vars
+  echo "DEFAULT_EOS_CCM_PASSWORD=$DEFAULT_EOS_CCM_PASSWORD" >> /home/zircon-tests/tests-env-vars
+  echo "DEFAULT_EOS_CCM_ACCOUNT_NAME=$DEFAULT_EOS_CCM_ACCOUNT_NAME" >> /home/zircon-tests/tests-env-vars
+  echo "DEFAULT_EOS_CCM_GROUP_NAME=$DEFAULT_EOS_CCM_GROUP_NAME" >> /home/zircon-tests/tests-env-vars
+
   # For some reason the default blobs paths is not being used by nitro-cli
   # to fix this we set default path here explicitly.
   echo "NITRO_CLI_BLOBS=/usr/share/nitro_enclaves/blobs/" >> /home/zircon-tests/tests-env-vars

@@ -1,0 +1,17 @@
+{
+    "docker_info":
+    {
+        "docker_image_name" : "test-docker-image",
+        "docker_version": "latest-version",
+        "docker_image_sha": "test-sha",
+        "docker_image_size": 1
+    },
+    "mrenclave": "",
+    "mrsigner": "",
+    "isvprodid": 0,
+    "isvsvn": 0,
+    "app_id": "",
+    "app_name": "test-app-create-build",
+    "mem_size": 2048,
+    "threads": 10
+}

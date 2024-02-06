@@ -1,0 +1,35 @@
+{
+  "description": "",
+  "inputImageName": "",
+  "isvprodid": 0,
+  "isvsvn": 0,
+  "name": "",
+  "outputImageName": "",
+  "threads": 10,
+  "javaMode": "",
+  "rwDirs": [],
+  "debug": "",
+  "memSize": "",
+  "enable_overlay_filesystem_persistence": "False",
+  "advanced_settings": {
+    "entrypoint": [],
+    "manifestEnv": [],
+    "caCertificate": {
+      "caPath": "",
+      "system": ""
+    },
+    "certificate": {
+      "altNames": [],
+      "certPath": "",
+      "chainPath": "",
+      "issuer": "",
+      "keyParam": {
+        "size": 2048
+      },
+      "keyPath": "",
+      "keyType": "",
+      "subject": ""
+    }
+  },
+  "allowed_domains": []
+}
