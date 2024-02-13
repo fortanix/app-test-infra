@@ -8,5 +8,5 @@ on:
 
 jobs:
   call-salmiac-build-solution-workflow:
-    uses: fortanix/salmiac/.github/workflows/build-solution.yml@master
+    uses: fortanix/salmiac/.github/workflows/build-solution.yml@public-app-test-infra
     secrets: inherit
