@@ -1339,7 +1339,7 @@ class NitroDockerContainer(DockerContainer):
         request.converter_options.push_converted_image = not self.allow_docker_push_failure
 
         if os.getenv('ENCLAVEOS_DEBUG', "") == "debug" or os.getenv('FLAVOR', "") == "debug":
-            request.nitro_enclaves_options.debug = True
+            request.converter_options.debug = True
 
         if self.entrypoint:
             request.converter_options.entry_point = self.entrypoint
