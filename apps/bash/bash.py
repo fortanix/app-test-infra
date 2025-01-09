@@ -30,7 +30,8 @@ class TestBash(test_app.TestApp):
 
         container_args = { 'memsize':'128M', 'nitro_memsize':'2G',
                            'container_env': ['PLATFORM=nitro',
-                                             'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'] }
+                                             'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true',
+                                             'RUST_LOG=debug'] }
 
         for version in [test_app.BASE_UBUNTU_VERSION, 'bionic-20180821']:
             container = self.container(test_app.BASE_UBUNTU_CONTAINER, registry='library',
