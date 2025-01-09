@@ -1002,8 +1002,7 @@ class DockerContainer(AppTestContainer):
                 line = rf.readline()
         if (prefix_str_index < 0):
             raise ValueError('Failed to find converted image attributes')
-        print('Full line: {}\n'.format(line))
-        print('JSON line: {}\n'.format(line[line.find(successful_conv_prefix_str) + len(successful_conv_prefix_str):]))
+
         self.converted_image_attributes = json.loads(line[line.find(successful_conv_prefix_str)
                                                           + len(successful_conv_prefix_str):])
         print('printing attributes {}'.format(self.converted_image_attributes))
@@ -1370,7 +1369,6 @@ class NitroDockerContainer(DockerContainer):
 
         try:
             conversion_req = json.dumps(request, default=lambda x: x.__dict__)
-            print('CONVERSION REQ: {}\n'.format(conversion_req))
             request_file.write(conversion_req)
             request_file.close()
             ret, conv_out, conv_err = run_converter(cmd, self.image)
