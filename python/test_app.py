@@ -1340,8 +1340,8 @@ class NitroDockerContainer(DockerContainer):
         request.nitro_enclaves_options.cpu_count = self.cpu_count
         request.converter_options.push_converted_image = not self.allow_docker_push_failure
 
-        #if os.getenv('ENCLAVEOS_DEBUG', "") == "debug" or os.getenv('FLAVOR', "") == "debug":
-#            request.converter_options.debug = True
+        if os.getenv('ENCLAVEOS_DEBUG', "") == "debug" or os.getenv('FLAVOR', "") == "debug":
+            request.converter_options.debug = True
 
         if self.entrypoint:
             request.converter_options.entry_point = self.entrypoint
