@@ -76,7 +76,7 @@ class TestMysql(test_app.TestApp):
             nitro_args = {'network':'bridge',
                           'container_env': [ 'MYSQL_ROOT_PASSWORD={}'.format(passwd),
                                              'ENCLAVEOS_DEBUG=debug',
-                                             'RUST_LOG=info',
+                                             'RUST_LOG=debug',
                                              dsm_endpoint_env_var,
                                              dsm_api_key,
                                              'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE=true'] }
