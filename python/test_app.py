@@ -379,7 +379,7 @@ def get_default_image_tag(image_name, registry):
     return get_latest_image_tag(image_name, registry)
 
 class AppTestContainer(object):
-    MAX_LOG_LINES = 10000
+    MAX_LOG_LINES = 20000
 
     def __init__(self, image, registry=DOCKER_REGISTRY,
                  image_version=None, manifest_options=None,
@@ -864,9 +864,11 @@ class DockerContainer(AppTestContainer):
     def logs(self, lines=None):
         if lines is None:
             lines = self.MAX_LOG_LINES
-        stdout = self.container \
-            .logs(stdout=True, stderr=False, timestamps=False, tail=lines) \
-            .decode('utf-8').rstrip().split('\n')
+
+        lines_undecoded = self.container.logs(stdout=True, stderr=False, timestamps=False, tail=lines)
+        print("LOGS UNDECODED: {}\n".format(lines_undecoded))
+        
+        stdout = lines_undecoded.decode('utf-8').rstrip().split('\n')
         stderr = self.container \
             .logs(stdout=False, stderr=True, timestamps=False, tail=lines) \
             .decode('utf-8').rstrip().split('\n')
