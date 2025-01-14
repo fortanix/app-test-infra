@@ -379,7 +379,7 @@ def get_default_image_tag(image_name, registry):
     return get_latest_image_tag(image_name, registry)
 
 class AppTestContainer(object):
-    MAX_LOG_LINES = 20000
+    MAX_LOG_LINES = 40000
 
     def __init__(self, image, registry=DOCKER_REGISTRY,
                  image_version=None, manifest_options=None,
