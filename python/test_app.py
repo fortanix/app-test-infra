@@ -1381,6 +1381,10 @@ class NitroDockerContainer(DockerContainer):
         if ret != 0:
             print('Converter error logs:\n')
             print(open(conv_err, "r").read())
+
+            print('Converter stdout logs:\n')
+            print(open(conv_out, "r").read())
+
             raise TestException('Converter returned an error')
 
         self.get_converted_image_attributes(successful_conv_prefix_str="Successful nitro conversion: ", conv_out=conv_out)
