@@ -1368,6 +1368,7 @@ class NitroDockerContainer(DockerContainer):
         # Tells container converter not to delete output image
         # from local repository
         os.environ["PRESERVE_IMAGES"] = "result"
+        os.environ["RUST_LOG"] = "debug"
 
         try:
             conversion_req = json.dumps(request, default=lambda x: x.__dict__)
