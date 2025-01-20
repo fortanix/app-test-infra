@@ -30,7 +30,8 @@ expected = {
     'hasdigits99': 'passed',
     'lowercase': 'passed',
     'DQUOTED': 'passed',
-    'SQUOTED': 'passed'
+    'SQUOTED': 'passed',
+    '_': '_=/usr/bin/python'
 }
 
 failed = False
@@ -47,5 +48,9 @@ for k,v in expected.items():
 
 if failed:
     print("test6 failed")
+    print("Environment variables are:")
+    for key, value in os.environ.items():
+        print(f"{key}={value}")
+
 else:
     print("test6 passed")
