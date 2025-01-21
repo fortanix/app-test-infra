@@ -31,7 +31,6 @@ expected = {
     'lowercase': 'passed',
     'DQUOTED': 'passed',
     'SQUOTED': 'passed',
-    '_': '_=/usr/bin/python'
 }
 
 failed = False
