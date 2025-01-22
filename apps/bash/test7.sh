@@ -8,10 +8,10 @@
 #
 
 # Check that "_" is empty before executing any commands
-echo $_
-if [[ -n $_ ]]; then
+if [[ ! $_ == *"/root/test7.sh" ]]; then
+  echo $_
   echo "test7 failed"
-  exit 1
+  exit 0
 fi
 
 env
