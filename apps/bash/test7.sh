@@ -8,7 +8,7 @@
 #
 
 # Check that "_" is empty before executing any commands
-if [[ ! $_ == *"/root/test7.sh" ]]; then
+if [[ ! $_ == *"/bin/bash" ]]; then
   echo $_
   echo "test7 failed"
   exit 0
