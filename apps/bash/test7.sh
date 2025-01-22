@@ -8,7 +8,7 @@
 #
 env
 if [[ $_ == *"env" ]]; then
-  echo "test 7 passed"
+  echo "test7 passed"
 else
-  echo "test 7 failed"
+  echo "test7 failed"
 fi
