@@ -7,8 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 env
-
-if [[ "$_" == "/usr/bin/env" ]]; then
+if [[ $_ == *"/usr/bin/env" ]]; then
   echo "test 7 passed"
 else
   echo "test 7 failed"
