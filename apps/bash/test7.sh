@@ -8,6 +8,7 @@
 #
 
 # Check that "_" is empty before executing any commands
+echo $_
 if [[ -n $_ ]]; then
   echo "test7 failed"
   exit 1
