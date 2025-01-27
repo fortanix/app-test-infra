@@ -65,6 +65,18 @@ class TestBash(test_app.TestApp):
         else:
             self.result('test6', 'FAILED')
 
+        # Test case for RTE-262: checks if "_" env var in bash points to the last executed command
+        container = self.container(test_app.BASE_UBUNTU_CONTAINER, registry='library',
+                                   image_version=test_app.BASE_UBUNTU_VERSION,
+                                   entrypoint=['/root/test7.sh'], **container_args)
+        container.copy_to_input_image(['test7.sh'], '/root/')
+        container.prepare()
+        if container.run_and_compare_stdout(['test7 passed'], cleanup=True):
+            self.result('test7', 'PASSED')
+        else:
+            self.result('test7', 'FAILED')
+
+
         # Test case for ZIRC-5494. This test cases exercises
         # a path where the grep command uses the splice system call.
         # This requires that grep be invoked in a particular way, and requires
