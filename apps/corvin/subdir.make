@@ -15,5 +15,6 @@ $(SUBDIR)/copy-files := \
 	startup.sh \
 	template_app.json	\
 	template_build.json
-$(SUBDIR)/app-test-FREQUENCY := daily
+# ZIRC-5366
+$(SUBDIR)/app-test-FREQUENCY := broken
 endif

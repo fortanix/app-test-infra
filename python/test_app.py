@@ -381,22 +381,53 @@ def get_default_image_tag(image_name, registry):
 class AppTestContainer(object):
     MAX_LOG_LINES = 10000
 
-    def __init__(self, image, registry=DOCKER_REGISTRY,
-                 image_version=None, manifest_options=None,
-                 nitro_memsize=None, memsize=None, stacksize=None, thread_num=24,
-                 manifest_env=None, entrypoint=None, run_args=None, auto_remove=True,
-                 converted_image=None, encrypted_dirs=None,
-                 persistent_volume=None, network_mode='bridge', ports=None,
-                 pexpect=False, pexpect_tmo=PEXPECT_TIMEOUT, certificates=None,
-                 ca_certificates=None, hostname=None, name=None, user=None,
-                 app=None, java_mode=None, rw_dirs=None, ro_dirs=None,
-                 allow_all_env=None, allow_some_env=None, container_env={'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE':'1'},
-                 post_conv_entry_point=None, network=None, zircon_debug=None,
-                 log_file_path=None, zircon_panic_expected=None,
-                 expected_status=0, dirs_to_copy=None, skip_converter_version_check=False,
-                 cpu_count=2, input_auth_config=None, output_auth_config=None,
-                 allow_docker_pull_failure=False, allow_docker_push_failure=True,
-                 enable_overlay_fs_persistence=None):
+    def __init__(self,
+                image,
+                allow_all_env=None,
+                allow_docker_pull_failure=False,
+                allow_docker_push_failure=True,
+                allow_some_env=None,
+                app=None,
+                auto_remove=True,
+                ca_certificates=None,
+                certificates=None,
+                container_env={'ENCLAVEOS_DISABLE_DEFAULT_CERTIFICATE':'1'},
+                converted_image=None,
+                cpu_count=2,
+                dirs_to_copy=None,
+                enable_overlay_fs_persistence=None,
+                encrypted_dirs=None,
+                entrypoint=None,
+                expected_status=0,
+                hostname=None,
+                image_version=None,
+                input_auth_config=None,
+                insecure_create_missing_directories=False,
+                java_mode=None,
+                log_file_path=None,
+                manifest_env=None,
+                manifest_options=None,
+                memsize=None,
+                name=None,
+                network=None,
+                network_mode='bridge',
+                nitro_memsize=None,
+                output_auth_config=None,
+                persistent_volume=None,
+                pexpect=False,
+                pexpect_tmo=PEXPECT_TIMEOUT,
+                ports=None,
+                post_conv_entry_point=None,
+                registry=DOCKER_REGISTRY,
+                ro_dirs=None,
+                run_args=None,
+                rw_dirs=None,
+                skip_converter_version_check=False,
+                stacksize=None,
+                thread_num=24,
+                user=None,
+                zircon_debug=None,
+                zircon_panic_expected=None):
 
         # This is needed for kube containers as well as docker, to
         # push images.
@@ -413,6 +444,7 @@ class AppTestContainer(object):
         self.memsize = memsize
         self.stacksize = stacksize
         self.thread_num = thread_num
+        self.insecure_create_missing_directories = insecure_create_missing_directories
 
         # Cpu count and use_filesystem is supported only by Nitro
         self.nitro_memsize = nitro_memsize
@@ -1161,6 +1193,9 @@ class ZirconContainer(AppTestContainer):
         if self.thread_num:
             extra_args += ['--threads', '{}'.format(self.thread_num)]
 
+        if self.insecure_create_missing_directories:
+            extra_args += ['--insecure-create-missing-directories', '{}'.format(self.insecure_create_missing_directories)]
+
         if self.encrypted_dirs:
             for d in self.encrypted_dirs:
                 extra_args += ['--encrypted-dir', '{}'.format(d)]
@@ -1836,7 +1871,7 @@ class MalborkContainer(object):
                 name = f.read().strip()
                 # ZIRC-5248 Override the manager test container name until MAL-5751 is complete and
                 # we have access to ub20 binaries which have the fix for MAL-5599
-                name = "513076507034.dkr.ecr.us-west-1.amazonaws.com/enclaveos/manager-test:1.41.2074"
+                name = "513076507034.dkr.ecr.us-west-1.amazonaws.com/enclaveos/manager-test:1.40.2425"
                 docker_client = docker.from_env()
                 image_id = docker_client.images.get(name).id
                 if image_id is None:
